@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Text } from '@chakra-ui/react';
 
-type Props = {};
-
-function Logo(props: Props) {
+function Logo() {
 	return (
 		<div>
 			<Text as={Link} to={'/'} fontSize="6xl">
