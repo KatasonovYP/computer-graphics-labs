@@ -2,7 +2,7 @@ import { Box, Stack } from '@chakra-ui/react';
 import Logo from './components/logo';
 import LabMenuList from './components/lab-menu-list';
 
-const Header = () => {
+export const Header = () => {
 	return (
 		<header>
 			<Stack direction="row" spacing="8px" align="center" justify="space-around">
@@ -16,5 +16,3 @@ const Header = () => {
 		</header>
 	);
 };
-
-export default Header;
