@@ -13,7 +13,7 @@ const DrawPoints = () => {
 					y={p.y}
 					fill="#44F"
 					radius={3}
-					onClick={(e) => console.log(key)}
+					onClick={() => console.log(key)}
 				/>
 			))}
 		</>
