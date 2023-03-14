@@ -10,7 +10,7 @@ const LabMenuList = () => {
 				Actions
 			</MenuButton>
 			<MenuList>
-				<MenuItem as={Link} to={'lab-01'}>
+				<MenuItem as={Link} to={'lab-02'}>
 					lab 01
 				</MenuItem>
 
