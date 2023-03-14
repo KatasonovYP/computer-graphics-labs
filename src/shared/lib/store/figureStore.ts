@@ -3,7 +3,7 @@ import { EAction } from '@shared/model/history-types';
 import { IEdge, IPoint } from '@shared/model/geometry-types';
 import Figure from '@shared/lib/geometry/Figure';
 import historyStore from './historyStore';
-import data from '@pages/lab-01/data/lab-01.json';
+import data from '@pages/lab-02/data/lab-01.json';
 
 export interface IFigureStore {
 	points: IPoint[];
