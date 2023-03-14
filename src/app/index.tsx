@@ -1,9 +1,10 @@
-import React from 'react';
-import { Routing } from '../pages';
-import { withProviders } from './providers';
+import type { FC } from 'react';
+import { Routing } from '@pages/index';
 import { Header } from '@widgets/header';
 
-const App = () => {
+import { withProviders } from './providers';
+
+const App: FC = () => {
 	return (
 		<div className="app">
 			<Header />

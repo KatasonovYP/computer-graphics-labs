@@ -1,1 +1,1 @@
-/// <reference types="vite/client" />
+export type { ViteClient } from 'vite/client';

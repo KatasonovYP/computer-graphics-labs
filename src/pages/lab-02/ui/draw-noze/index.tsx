@@ -1,8 +1,9 @@
-import React from 'react';
+import { type FC } from 'react';
 import { Line } from 'react-konva';
+
 import useFigureStore from '../../../../shared/lib/store/figureStore';
 
-const DrawNose = () => {
+const DrawNose: FC = () => {
 	const points = useFigureStore((state) => state.points);
 	return (
 		<>

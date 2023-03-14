@@ -1,4 +1,4 @@
-import {IPoint} from "@shared/model/geometry-types";
+import { type IPoint } from '@shared/model/geometry-types';
 
 class Point {
 	x: number;
@@ -10,7 +10,7 @@ class Point {
 	}
 
 	public getPoint(): IPoint {
-		return {x: this.x, y: this.y};
+		return { x: this.x, y: this.y };
 	}
 
 	public eq(other: Point): boolean {
@@ -24,34 +24,34 @@ class Point {
 		return this.x - other.x;
 	}
 
-	public move(dx: number, dy: number) {
+	public move(dx: number, dy: number): Point {
 		this.x += dx;
 		this.y += dy;
 		return this;
 	}
 
-	public rotate(center: Point, angle: number) {
+	public rotate(center: Point, angle: number): Point {
 		const radians = (angle * Math.PI) / 180;
-		const r_cos = Math.cos(radians);
-		const r_sin = Math.sin(radians);
+		const rCos = Math.cos(radians);
+		const rSin = Math.sin(radians);
 
-		const old_x = this.x;
-		const old_y = this.y;
+		const oldX = this.x;
+		const oldY = this.y;
 
-		this.x = +(old_x - center.x) * r_cos + (old_y - center.y) * r_sin + center.x;
-		this.y = -(old_x - center.x) * r_sin + (old_y - center.y) * r_cos + center.y;
+		this.x = +(oldX - center.x) * rCos + (oldY - center.y) * rSin + center.x;
+		this.y = -(oldX - center.x) * rSin + (oldY - center.y) * rCos + center.y;
 
 		return this;
 	}
 
-	public scale(center: Point, kx: number, ky: number) {
+	public scale(center: Point, kx: number, ky: number): Point {
 		this.x = (this.x - center.x) * kx + center.x;
 		this.y = (this.y - center.y) * ky + center.y;
 		return this;
 	}
 
-	public findInArray(points: Array<Point>): boolean {
-		for (let other of points) {
+	public findInArray(points: Point[]): boolean {
+		for (const other of points) {
 			if (this.eq(other)) return true;
 		}
 		return false;

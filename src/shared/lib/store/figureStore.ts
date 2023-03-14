@@ -1,9 +1,10 @@
-import { create } from 'zustand';
-import { EAction } from '@shared/model/history-types';
-import { IEdge, IPoint } from '@shared/model/geometry-types';
+import data from '@pages/lab-02/data/lab-02.json';
 import Figure from '@shared/lib/geometry/Figure';
+import { type IEdge, type IPoint } from '@shared/model/geometry-types';
+import { EAction } from '@shared/model/history-types';
+import { create } from 'zustand';
+
 import historyStore from './historyStore';
-import data from '@pages/lab-02/data/lab-01.json';
 
 export interface IFigureStore {
 	points: IPoint[];

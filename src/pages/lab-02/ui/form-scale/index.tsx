@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type FC } from 'react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Stack } from '@chakra-ui/react';
 import { ActionInput } from '@shared/components';
+import { onPromise } from '@shared/lib/helpers/on-promise';
 import { useFigureStore } from '@shared/lib/store';
 
 interface IMoveForm {
@@ -18,17 +19,20 @@ const ScaleForm: FC = () => {
 
 	const scale = useFigureStore((state) => state.scale);
 
-	const onAction: SubmitHandler<IMoveForm> = (data) => {
+	const onAction: SubmitHandler<IMoveForm> = (data): void => {
 		scale(Number(data.kx), Number(data.ky));
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onAction)}>
+		<form onSubmit={onPromise(handleSubmit(onAction))}>
 			<Stack spacing={4}>
 				<ActionInput {...{ register, errors, name: 'kx', defaultValue: 1.2 }} />
 				<ActionInput {...{ register, errors, name: 'ky', defaultValue: 1.2 }} />
 
-				<Button variant="solid" type="submit">
+				<Button
+					variant="solid"
+					type="submit"
+				>
 					Масштабировать
 				</Button>
 			</Stack>

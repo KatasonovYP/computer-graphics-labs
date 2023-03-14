@@ -1,9 +1,9 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { type FC } from 'react';
 import { Link } from 'react-router-dom';
-import * as React from 'react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
-const LabMenuList = () => {
+const LabMenuList: FC = () => {
 	return (
 		<Menu>
 			<MenuButton

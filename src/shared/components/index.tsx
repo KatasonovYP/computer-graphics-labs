@@ -1,1 +1,1 @@
-export { default as ActionInput } from './action-input';
+export { ActionInput } from './action-input';

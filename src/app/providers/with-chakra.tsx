@@ -1,6 +1,8 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 
-export const withChakra = (component: () => ReactNode) => () => {
-	return <ChakraProvider>{component()}</ChakraProvider>;
-};
+export function withChakra(component: () => ReactNode) {
+	return function WithChakra() {
+		return <ChakraProvider>{component()}</ChakraProvider>;
+	};
+}

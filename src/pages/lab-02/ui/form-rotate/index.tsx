@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type FC } from 'react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Stack } from '@chakra-ui/react';
 import { ActionInput } from '@shared/components';
+import { onPromise } from '@shared/lib/helpers/on-promise';
 import { useFigureStore } from '@shared/lib/store';
 
 interface IRotateForm {
@@ -17,16 +18,19 @@ const RotateForm: FC = () => {
 
 	const rotate = useFigureStore((state) => state.rotate);
 
-	const onAction: SubmitHandler<IRotateForm> = (data) => {
+	const onAction: SubmitHandler<IRotateForm> = (data): void => {
 		rotate(Number(data.angle));
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onAction)}>
+		<form onSubmit={onPromise(handleSubmit(onAction))}>
 			<Stack spacing={4}>
 				<ActionInput {...{ register, errors, name: 'angle', defaultValue: 30 }} />
 
-				<Button variant="solid" type="submit">
+				<Button
+					variant="solid"
+					type="submit"
+				>
 					Вращать
 				</Button>
 			</Stack>

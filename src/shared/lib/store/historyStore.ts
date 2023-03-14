@@ -1,5 +1,6 @@
-import { EAction, IFrame } from '@shared/model/history-types';
+import { EAction, type IFrame } from '@shared/model/history-types';
 import { create } from 'zustand';
+
 import useFigureStore from './figureStore';
 
 interface IHistoryStore {

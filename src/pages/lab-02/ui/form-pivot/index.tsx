@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { type FC } from 'react';
+import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Stack } from '@chakra-ui/react';
 import { ActionInput } from '@shared/components';
+import { onPromise } from '@shared/lib/helpers/on-promise';
 import { useFigureStore } from '@shared/lib/store';
 
 interface IMoveForm {
@@ -18,12 +19,12 @@ const PivotForm: FC = () => {
 
 	const setPivot = useFigureStore((state) => state.setPivot);
 
-	const onAction: SubmitHandler<IMoveForm> = (data) => {
+	const onAction: SubmitHandler<IMoveForm> = (data): void => {
 		setPivot(Number(data.x), Number(data.y));
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onAction)}>
+		<form onSubmit={onPromise(handleSubmit(onAction))}>
 			<Stack spacing={2}>
 				<ActionInput {...{ register, errors, name: 'x', defaultValue: 150 }} />
 				<ActionInput {...{ register, errors, name: 'y', defaultValue: 150 }} />

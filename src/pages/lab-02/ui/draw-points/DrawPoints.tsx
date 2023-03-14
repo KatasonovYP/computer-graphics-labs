@@ -1,9 +1,10 @@
-import React from 'react';
-import useFigureStore from '@shared/lib/store/figureStore';
+import { type FC } from 'react';
 import { Circle } from 'react-konva';
+import useFigureStore from '@shared/lib/store/figureStore';
 
-const DrawPoints = () => {
+const DrawPoints: FC = () => {
 	const points = useFigureStore((state) => state.points);
+	console.log(points);
 	return (
 		<>
 			{points.map((p, key) => (
@@ -13,7 +14,9 @@ const DrawPoints = () => {
 					y={p.y}
 					fill="#44F"
 					radius={3}
-					onClick={() => console.log(key)}
+					onClick={() => {
+						console.log(key);
+					}}
 				/>
 			))}
 		</>

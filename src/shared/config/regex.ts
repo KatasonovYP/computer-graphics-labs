@@ -1,1 +1,1 @@
-export const numberRegExp = /(([+\-]*\d*\.*\d+[eE])?([+\-]*\d*\.*\d+))/
+export const numberRegExp = /(([+-]*\d*\.*\d+[eE])?([+-]*\d*\.*\d+))/;

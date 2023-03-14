@@ -1,11 +1,13 @@
+import { type FC } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
+import PivotForm from '@pages/lab-02/ui/form-pivot';
+
 import { Canvas } from './ui/canvas';
 import MoveForm from './ui/form-move';
 import RotateForm from './ui/form-rotate';
 import ScaleForm from './ui/form-scale';
-import PivotForm from '@pages/lab-02/ui/form-pivot';
 
-const Lab02 = () => {
+const Lab02: FC = () => {
 	return (
 		<SimpleGrid
 			m="auto"
@@ -13,7 +15,7 @@ const Lab02 = () => {
 			columns={[1, null, 2]}
 			spacing={4}
 		>
-			{/*<Text fontSize="3xl">Лабораторная работа №2</Text>*/}
+			{/* <Text fontSize="3xl">Лабораторная работа №2</Text> */}
 			<SimpleGrid
 				columns={[1, null, 2]}
 				spacing={4}

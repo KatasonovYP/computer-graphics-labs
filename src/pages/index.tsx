@@ -1,10 +1,10 @@
+import { type FC, lazy } from 'react';
 import { Route, Routes } from 'react-router';
-import { lazy } from 'react';
 
-const Home = lazy(() => import('./Home'));
-const Lab02 = lazy(() => import('./lab-02'));
+const Home = lazy(async () => await import('./Home'));
+const Lab02 = lazy(async () => await import('./lab-02'));
 
-export const Routing = () => {
+export const Routing: FC = () => {
 	return (
 		<Routes>
 			<Route
