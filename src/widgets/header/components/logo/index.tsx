@@ -8,7 +8,7 @@ const Logo: FC = () => {
 			<Text
 				as={Link}
 				to={'/'}
-				fontSize="6xl"
+				fontSize='6xl'
 			>
 				CG
 			</Text>

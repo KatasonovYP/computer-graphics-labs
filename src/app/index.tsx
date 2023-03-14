@@ -1,12 +1,13 @@
-import type { FC } from 'react';
 import { Routing } from '@pages/index';
 import { Header } from '@widgets/header';
 
 import { withProviders } from './providers';
 
+import type { FC } from 'react';
+
 const App: FC = () => {
 	return (
-		<div className="app">
+		<div className='app'>
 			<Header />
 			<Routing />
 		</div>

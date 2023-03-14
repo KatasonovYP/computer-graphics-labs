@@ -1,5 +1,6 @@
 import { type FC } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
+
 import PivotForm from '@pages/lab-02/ui/form-pivot';
 
 import { Canvas } from './ui/canvas';
@@ -10,7 +11,7 @@ import ScaleForm from './ui/form-scale';
 const Lab02: FC = () => {
 	return (
 		<SimpleGrid
-			m="auto"
+			m='auto'
 			maxW={'fit-content'}
 			columns={[1, null, 2]}
 			spacing={4}
@@ -27,7 +28,7 @@ const Lab02: FC = () => {
 			</SimpleGrid>
 
 			<Box
-				border="2px"
+				border='2px'
 				borderColor={'black'}
 				borderRadius={'10px'}
 			>

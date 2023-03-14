@@ -5,5 +5,17 @@
   "printWidth": 120,
   "tabWidth": 4,
   "useTabs": true,
-  "singleAttributePerLine": true
+  "jsxSingleQuote": true,
+  "singleAttributePerLine": true,
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "semi": false,
+        "singleAttributePerLine": false,
+        "trailingComma": "all",
+        "bracketSameLine": true
+      }
+    }
+  ]
 }

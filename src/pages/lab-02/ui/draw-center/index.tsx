@@ -1,5 +1,6 @@
 import { type FC } from 'react';
 import { Circle } from 'react-konva';
+
 import useFigureStore from '@shared/lib/store/figureStore';
 
 const DrawCenter: FC = () => {
@@ -8,7 +9,7 @@ const DrawCenter: FC = () => {
 		<Circle
 			x={pivot.x}
 			y={pivot.y}
-			fill="#F00"
+			fill='#F00'
 			radius={5}
 		/>
 	);

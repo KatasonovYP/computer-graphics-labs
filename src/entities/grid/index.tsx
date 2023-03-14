@@ -57,7 +57,7 @@ export const Grid: FC<Props> = ({ sideLength, children }: Props) => {
 
 	return (
 		<Stage
-			className="canvas"
+			className='canvas'
 			draggable
 			width={stage.width}
 			height={stage.height}

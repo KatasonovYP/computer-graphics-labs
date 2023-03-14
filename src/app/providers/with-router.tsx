@@ -6,7 +6,7 @@ export function withRouter(component: () => React.ReactNode) {
 	return function WithRouter() {
 		return (
 			<BrowserRouter>
-				<Suspense fallback={<Spinner size="xl" />}>{component()}</Suspense>
+				<Suspense fallback={<Spinner size='xl' />}>{component()}</Suspense>
 			</BrowserRouter>
 		);
 	};

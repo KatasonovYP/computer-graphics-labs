@@ -19,7 +19,7 @@ const DrawNose: FC = () => {
 					points[12].y,
 				]}
 				strokeWidth={5}
-				fill="#00F"
+				fill='#00F'
 				closed={true}
 			/>
 		</>

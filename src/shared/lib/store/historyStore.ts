@@ -1,5 +1,6 @@
-import { EAction, type IFrame } from '@shared/model/history-types';
 import { create } from 'zustand';
+
+import { EAction, type IFrame } from '@shared/model/history-types';
 
 import useFigureStore from './figureStore';
 
@@ -36,7 +37,6 @@ const useHistoryStore = create<IHistoryStore>(
 					useFigureStore.getState().setPivotToState(frame.x, frame.y);
 					break;
 				default:
-					console.error('unknown action');
 					break;
 			}
 		},

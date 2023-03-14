@@ -8,11 +8,11 @@ export const Routing: FC = () => {
 	return (
 		<Routes>
 			<Route
-				path="/"
+				path='/'
 				element={<Home />}
 			/>
 			<Route
-				path="/lab-02"
+				path='/lab-02'
 				element={<Lab02 />}
 			/>
 		</Routes>

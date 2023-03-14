@@ -1,8 +1,9 @@
+import { create } from 'zustand';
+
 import data from '@pages/lab-02/data/lab-02.json';
 import Figure from '@shared/lib/geometry/Figure';
 import { type IEdge, type IPoint } from '@shared/model/geometry-types';
 import { EAction } from '@shared/model/history-types';
-import { create } from 'zustand';
 
 import historyStore from './historyStore';
 

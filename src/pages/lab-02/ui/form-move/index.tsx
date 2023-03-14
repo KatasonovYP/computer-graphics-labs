@@ -1,6 +1,7 @@
 import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Stack } from '@chakra-ui/react';
+
 import { ActionInput } from '@shared/components';
 import { onPromise } from '@shared/lib/helpers/on-promise';
 import { useFigureStore } from '@shared/lib/store';
@@ -30,8 +31,8 @@ const MoveForm: FC = () => {
 				<ActionInput {...{ register, errors, name: 'dy', defaultValue: 15 }} />
 
 				<Button
-					variant="solid"
-					type="submit"
+					variant='solid'
+					type='submit'
 				>
 					Переместить
 				</Button>

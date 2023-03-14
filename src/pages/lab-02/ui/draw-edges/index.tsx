@@ -1,5 +1,6 @@
 import { type FC } from 'react';
 import { Line } from 'react-konva';
+
 import useFigureStore from '@shared/lib/store/figureStore';
 
 const DrawEdges: FC = () => {
@@ -10,7 +11,7 @@ const DrawEdges: FC = () => {
 			{edges.map((e, key) => (
 				<Line
 					points={[points[e[0]].x, points[e[0]].y, points[e[1]].x, points[e[1]].y]}
-					stroke="#88F"
+					stroke='#88F'
 					strokeWidth={2}
 					key={key}
 				/>

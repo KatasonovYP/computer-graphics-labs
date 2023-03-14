@@ -17,7 +17,7 @@ function drawLines(stage: IStage): JSX.Element[] {
 		gridLines.push(
 			<Line
 				points={[-x, stepY, -x + width, stepY]}
-				stroke="#aaa"
+				stroke='#aaa'
 				strokeWidth={1}
 				key={key++}
 			/>,
@@ -28,7 +28,7 @@ function drawLines(stage: IStage): JSX.Element[] {
 		gridLines.push(
 			<Line
 				points={[stepX, -y, stepX, -y + height]}
-				stroke="#aaa"
+				stroke='#aaa'
 				strokeWidth={1}
 				key={key++}
 			/>,

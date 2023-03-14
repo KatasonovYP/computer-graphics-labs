@@ -8,10 +8,10 @@ export const Header: FC = () => {
 	return (
 		<header>
 			<Stack
-				direction="row"
-				spacing="8px"
-				align="center"
-				justify="space-around"
+				direction='row'
+				spacing='8px'
+				align='center'
+				justify='space-around'
 			>
 				<Box>
 					<Logo />

@@ -1,4 +1,5 @@
 import { type FC } from 'react';
+
 import { Grid } from '@entities/grid';
 import DrawCenter from '@pages/lab-02/ui/draw-center';
 import DrawEdges from '@pages/lab-02/ui/draw-edges';
