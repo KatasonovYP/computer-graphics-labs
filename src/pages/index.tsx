@@ -12,7 +12,7 @@ export const Routing = () => {
 				element={<Home />}
 			/>
 			<Route
-				path="/lab-01"
+				path="/lab-02"
 				element={<Lab02 />}
 			/>
 		</Routes>

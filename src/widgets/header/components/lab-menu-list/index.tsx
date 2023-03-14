@@ -6,12 +6,18 @@ import * as React from 'react';
 const LabMenuList = () => {
 	return (
 		<Menu>
-			<MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+			<MenuButton
+				as={Button}
+				rightIcon={<ChevronDownIcon />}
+			>
 				Actions
 			</MenuButton>
 			<MenuList>
-				<MenuItem as={Link} to={'lab-02'}>
-					lab 01
+				<MenuItem
+					as={Link}
+					to={'lab-02'}
+				>
+					lab 02
 				</MenuItem>
 
 				<MenuItem>Create a Copy</MenuItem>
