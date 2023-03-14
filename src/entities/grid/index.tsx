@@ -7,9 +7,9 @@ import { KonvaEventObject } from 'konva/lib/Node';
 interface Props {
 	sideLength: number;
 	children: ReactNode;
-};
+}
 
-export const Grid: FC<Props> = ({ sideLength,children }) => {
+export const Grid: FC<Props> = ({ sideLength, children }) => {
 	const [stage, setStage] = useState<IStage>({
 		x: 0,
 		y: 0,
