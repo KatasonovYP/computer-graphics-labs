@@ -1,11 +1,12 @@
 import { create } from 'zustand';
 
-import data from '@pages/lab-02/data/lab-02.json';
-import Figure from '@shared/lib/geometry/Figure';
-import { type IEdge, type IPoint } from '@shared/model/geometry-types';
-import { EAction } from '@shared/model/history-types';
+import { EAction, type IEdge, type IPoint } from 'shared/model';
 
-import historyStore from './historyStore';
+import Figure from '../geometry/figure';
+
+import data from './lab-02.json';
+
+import historyStore from './history-store';
 
 export interface IFigureStore {
 	points: IPoint[];
@@ -22,6 +23,7 @@ export interface IFigureStore {
 }
 
 const useFigureStore = create<IFigureStore>(
+	// eslint-disable-next-line max-lines-per-function
 	(set, get): IFigureStore => ({
 		points: data.points,
 		edges: data.edges,
@@ -43,8 +45,7 @@ const useFigureStore = create<IFigureStore>(
 		},
 
 		setPivot: (x: number, y: number) => {
-			const oldPivot = get().pivot;
-			historyStore.getState().pushFrame({ action: EAction.PIVOT, x: oldPivot.x, y: oldPivot.y });
+			historyStore.getState().pushFrame({ action: EAction.PIVOT, ...get().pivot });
 			get().setPivotToState(x, y);
 		},
 
@@ -52,9 +53,6 @@ const useFigureStore = create<IFigureStore>(
 			set(
 				(state): IFigureStore => ({
 					...state,
-					// pivot: new Point(state.pivot)
-					// 	.move(kx, dy)
-					// 	.getPoint(),
 					points: new Figure(state.pivot, state.points).move(dx, dy).getPoints(),
 				}),
 			);

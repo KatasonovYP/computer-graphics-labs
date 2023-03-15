@@ -1,4 +1,4 @@
-import { type IPoint } from '@shared/model/geometry-types';
+import { type IPoint } from 'shared/model';
 
 class Point {
 	x: number;
@@ -44,6 +44,7 @@ class Point {
 		return this;
 	}
 
+	// eslint-disable-next-line max-params
 	public scale(center: Point, kx: number, ky: number): Point {
 		this.x = (this.x - center.x) * kx + center.x;
 		this.y = (this.y - center.y) * ky + center.y;

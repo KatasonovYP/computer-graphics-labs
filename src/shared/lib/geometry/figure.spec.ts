@@ -1,13 +1,13 @@
 import { expect, test } from 'vitest';
 
-import Figure from './Figure';
+import Figure from './figure';
 
 test('is same', () => {
-	const first = new Figure({ x: 0, y: 0 },[
+	const first = new Figure({ x: 0, y: 0 }, [
 		{ x: 0, y: 0 },
 		{ x: 1, y: 2 },
 	]);
-	const result = new Figure({ x: 0, y: 0 },[
+	const result = new Figure({ x: 0, y: 0 }, [
 		{ x: 0, y: 0 },
 		{ x: 1, y: 2 },
 	]);
@@ -18,7 +18,7 @@ test('is not same', () => {
 		{ x: 0, y: 0 },
 		{ x: 1, y: 3 },
 	]);
-	const result = new Figure({ x: 0, y: 0 },[
+	const result = new Figure({ x: 0, y: 0 }, [
 		{ x: 0, y: 0 },
 		{ x: 1, y: 2 },
 	]);
@@ -26,12 +26,12 @@ test('is not same', () => {
 });
 
 test('move', () => {
-	const fig = new Figure({ x: 0, y: 0 },[
+	const fig = new Figure({ x: 0, y: 0 }, [
 		{ x: 0, y: 0 },
 		{ x: 1, y: 1 },
 	]);
 	fig.move(2, 3);
-	const result = new Figure({ x: 0, y: 0 },[
+	const result = new Figure({ x: 0, y: 0 }, [
 		{ x: 2, y: 3 },
 		{ x: 3, y: 4 },
 	]);

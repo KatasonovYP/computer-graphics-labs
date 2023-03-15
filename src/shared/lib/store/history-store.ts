@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
-import { EAction, type IFrame } from '@shared/model/history-types';
+import { EAction, type IFrame } from '../../model';
 
-import useFigureStore from './figureStore';
+import useFigureStore from './figure-store';
 
 interface IHistoryStore {
 	history: IFrame[];
@@ -13,6 +13,7 @@ interface IHistoryStore {
 }
 
 const useHistoryStore = create<IHistoryStore>(
+	// eslint-disable-next-line max-lines-per-function
 	(set, get): IHistoryStore => ({
 		history: [],
 
@@ -24,20 +25,25 @@ const useHistoryStore = create<IHistoryStore>(
 
 		reverseAction: (frame: IFrame) => {
 			switch (frame.action) {
-				case EAction.MOVE:
+				case EAction.MOVE: {
 					useFigureStore.getState().setMove(-frame.dx, -frame.dy);
 					break;
-				case EAction.ROTATE:
+				}
+				case EAction.ROTATE: {
 					useFigureStore.getState().setRotate(-frame.angle);
 					break;
-				case EAction.SCALE:
+				}
+				case EAction.SCALE: {
 					useFigureStore.getState().setScale(1 / frame.kx, 1 / frame.ky);
 					break;
-				case EAction.PIVOT:
+				}
+				case EAction.PIVOT: {
 					useFigureStore.getState().setPivotToState(frame.x, frame.y);
 					break;
-				default:
+				}
+				default: {
 					break;
+				}
 			}
 		},
 
@@ -59,7 +65,7 @@ const useHistoryStore = create<IHistoryStore>(
 			set(
 				(state): IHistoryStore => ({
 					...state,
-					history: [...state.history.slice(0, state.history.length - 1)],
+					history: state.history.slice(0, -1),
 				}),
 			);
 			return frame;

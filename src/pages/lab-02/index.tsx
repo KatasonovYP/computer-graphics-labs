@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 
-import PivotForm from '@pages/lab-02/ui/form-pivot';
+import PivotForm from './ui/form-pivot';
 
 import { Canvas } from './ui/canvas';
 import MoveForm from './ui/form-move';

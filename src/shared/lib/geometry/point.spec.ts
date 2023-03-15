@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import Point from './Point';
+import Point from './point';
 
 test('is same', () => {
 	const first = new Point({ x: 10, y: 15 });

@@ -2,7 +2,7 @@ import { type SyntheticEvent } from 'react';
 
 import { create } from 'zustand';
 
-import { EPanel } from '@shared/model/ui-types';
+import { EPanel } from 'shared/model';
 
 interface IFeatureStore {
 	expanded: EPanel;

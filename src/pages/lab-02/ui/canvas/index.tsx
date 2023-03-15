@@ -1,9 +1,10 @@
 import { type FC } from 'react';
 
-import { Grid } from '@entities/grid';
-import DrawCenter from '@pages/lab-02/ui/draw-center';
-import DrawEdges from '@pages/lab-02/ui/draw-edges';
-import DrawNose from '@pages/lab-02/ui/draw-noze';
+import { Grid } from 'entities';
+
+import DrawCenter from '../draw-center';
+import DrawEdges from '../draw-edges';
+import DrawNose from '../draw-noze';
 
 export const Canvas: FC = () => {
 	const width = Math.min(window.screen.availWidth - 20, 500);

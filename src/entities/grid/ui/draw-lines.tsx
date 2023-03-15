@@ -1,6 +1,6 @@
 import { Line } from 'react-konva';
 
-import { getNear } from '../lib/getNear';
+import { getNear } from '../lib/get-near';
 import { type IStage } from '../model/types';
 
 const gridSize = 50;

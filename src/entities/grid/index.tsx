@@ -3,14 +3,14 @@ import { Layer, Stage } from 'react-konva';
 import { type KonvaEventObject } from 'konva/lib/Node';
 
 import { type IStage } from './model/types';
-import drawLines from './ui/drawLines';
+import drawLines from './ui/draw-lines';
 
-interface Props {
+interface Properties {
 	sideLength: number;
 	children: ReactNode;
 }
 
-export const Grid: FC<Props> = ({ sideLength, children }: Props) => {
+export const Grid: FC<Properties> = ({ sideLength, children }: Properties) => {
 	const [stage, setStage] = useState<IStage>({
 		x: 0,
 		y: 0,
@@ -19,19 +19,19 @@ export const Grid: FC<Props> = ({ sideLength, children }: Props) => {
 		scale: 1,
 	});
 
-	const moveHandler = (e: KonvaEventObject<MouseEvent>): void => {
-		const pos = e.currentTarget.position();
+	const moveHandler = (event: KonvaEventObject<MouseEvent>): void => {
+		const pos = event.currentTarget.position();
 		const x = pos.x;
 		const y = pos.y;
 		setStage({ ...stage, x, y });
 	};
 
 	// scale
-	const scaleHandler = (e: KonvaEventObject<WheelEvent>): void => {
-		e.evt.preventDefault();
+	const scaleHandler = (event: KonvaEventObject<WheelEvent>): void => {
+		event.evt.preventDefault();
 
 		const scaleBy = 1.02;
-		const newStage = e.target.getStage();
+		const newStage = event.target.getStage();
 
 		if (newStage === null) return;
 
@@ -45,7 +45,7 @@ export const Grid: FC<Props> = ({ sideLength, children }: Props) => {
 			y: (pointer.y - newStage.y()) / oldScale,
 		};
 
-		const newScale = e.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
+		const newScale = event.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
 
 		setStage({
 			...stage,

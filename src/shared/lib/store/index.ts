@@ -1,4 +1,3 @@
-export { default as useFeatureStore } from './featureStore';
-export { default as useFigureStore } from './figureStore';
-export { default as useHistoryStore } from './historyStore';
-
+export { default as useFeatureStore } from './feature-store';
+export { default as useFigureStore } from './figure-store';
+export { default as useHistoryStore } from './history-store';

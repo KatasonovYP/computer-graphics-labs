@@ -1,7 +1,7 @@
 import { type FC } from 'react';
 import { Circle } from 'react-konva';
 
-import useFigureStore from '@shared/lib/store/figureStore';
+import { useFigureStore } from 'shared/lib';
 
 const DrawCenter: FC = () => {
 	const pivot = useFigureStore((state) => state.pivot);

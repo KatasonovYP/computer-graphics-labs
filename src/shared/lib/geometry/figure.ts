@@ -1,6 +1,6 @@
-import { type IPoint } from '@shared/model/geometry-types';
+import { type IPoint } from 'shared/model';
 
-import Point from './Point';
+import Point from './point';
 
 class Figure {
 	points: Point[];
@@ -21,8 +21,8 @@ class Figure {
 
 	public eq(other: Figure): boolean {
 		if (!this.pivot.eq(other.pivot)) return false;
-		for (let i = 0; i < this.points.length; ++i) {
-			if (!this.points[i].eq(other.points[i])) {
+		for (let index = 0; index < this.points.length; ++index) {
+			if (!this.points[index].eq(other.points[index])) {
 				return false;
 			}
 		}

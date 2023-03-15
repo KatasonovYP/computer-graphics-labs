@@ -1,5 +1,5 @@
-import { Routing } from '@pages/index';
-import { Header } from '@widgets/header';
+import { Routing } from 'pages';
+import { Header } from 'widgets';
 
 import { withProviders } from './providers';
 
