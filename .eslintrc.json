@@ -1,0 +1,122 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/recommended",
+    "plugin:unicorn/recommended",
+    "prettier"
+  ],
+
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": [ "./tsconfig.json" ],
+    "ecmaFeatures": {"jsx": true},
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+
+  "plugins": [ "react", "import", "unicorn" ],
+
+  "rules": {
+
+    // imports
+    "import/no-unresolved": "error",
+    "import/order": ["warn", {
+      // Allowed imports
+      "pathGroups": [
+        { "group": "internal", "pattern":  "shared" },
+        { "group": "internal", "pattern":  "shared/**" },
+        { "group": "internal", "pattern":  "pages" },
+        { "group": "internal", "pattern":  "widgets" },
+        { "group": "internal", "pattern":  "features" },
+        { "group": "internal", "pattern":  "entities" },
+        { "group": "internal", "pattern":  "models" }
+      ],
+      "groups": [ "builtin", "external", "internal", "parent", "sibling", "index", "object", "type" ],
+      "newlines-between": "always-and-inside-groups"
+    }],
+    // banned imports
+    "no-restricted-imports": [2, { "patterns":  [
+      "app/**",
+      "pages/**",
+      "widgets/**",
+      "features/**",
+      "shared/*/**",
+      "models.gen",
+      "../**/app",
+      "../**/pages",
+      "../**/widgets",
+      "../**/features",
+      "../**/shared",
+      "../**/models"
+    ]}],
+
+    //variables
+    "prefer-const": 2,
+    "no-var": 2,
+
+    //base
+    "camelcase": [1, { "ignoreDestructuring": true, "ignoreImports": true, "properties": "never" }],
+    "no-else-return": 2,
+    "dot-notation": 2,
+    "eol-last": 2,
+
+    // alert, console
+    "no-console": 1,
+    "no-alert": 2,
+
+    // equals
+    "eqeqeq": 1,
+    "no-eq-null": 2,
+
+    // function
+    "max-params": [1, 2],
+    "max-lines-per-function": [1, 48],
+    "arrow-parens": [2, "always"],
+
+    // style
+    "jsx-quotes": [1, "prefer-single"],
+    "semi": [1, "always"],
+
+    // unicorn plagin
+    "unicorn/filename-case": [2, {
+      "cases": { "kebabCase": true }
+    }],
+    "unicorn/no-null": 0
+
+  },
+  "settings": {
+    "react": { "version": "detect" },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        // Choose from one of the "project" configs below or omit to use <root>/tsconfig.json by default
+        // use <root>/path/to/folder/tsconfig.json
+        "project": "tsconfig.json"
+      }
+    }
+  },
+
+  "overrides": [
+    {
+      "files": [ "*.json" ],
+      "rules": {
+        "no-unused-expressions": "off",
+        "semi": ["error", "never"]
+      }
+    }
+  ]
+}
