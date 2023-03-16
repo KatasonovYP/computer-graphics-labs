@@ -3,7 +3,7 @@ import { Layer, Stage } from 'react-konva';
 import { type KonvaEventObject } from 'konva/lib/Node';
 
 import { type IStage } from './model/types';
-import drawLines from './ui/draw-lines';
+import { drawLines } from './ui/draw-lines';
 
 interface Properties {
 	sideLength: number;

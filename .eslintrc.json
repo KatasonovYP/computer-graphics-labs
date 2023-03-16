@@ -29,6 +29,8 @@
   "rules": {
 
     // imports
+    "import/default": 0,
+    "import/no-default-export": 2,
     "import/no-unresolved": "error",
     "import/order": ["warn", {
       // Allowed imports

@@ -1,8 +1,8 @@
 import { type IPoint } from 'shared/model';
 
-import Point from './point';
+import { Point } from './point';
 
-class Figure {
+export class Figure {
 	points: Point[];
 	pivot: Point;
 
@@ -45,5 +45,3 @@ class Figure {
 		return this;
 	}
 }
-
-export default Figure;

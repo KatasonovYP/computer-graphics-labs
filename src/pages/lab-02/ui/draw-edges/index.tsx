@@ -3,7 +3,7 @@ import { Line } from 'react-konva';
 
 import { useFigureStore } from 'shared/lib';
 
-const DrawEdges: FC = () => {
+export const DrawEdges: FC = () => {
 	const edges = useFigureStore((state) => state.edges);
 	const points = useFigureStore((state) => state.points);
 	return (
@@ -19,5 +19,3 @@ const DrawEdges: FC = () => {
 		</>
 	);
 };
-
-export default DrawEdges;

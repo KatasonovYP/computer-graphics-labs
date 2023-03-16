@@ -5,7 +5,7 @@ import { type IStage } from '../model/types';
 
 const gridSize = 50;
 
-function drawLines(stage: IStage): JSX.Element[] {
+export function drawLines(stage: IStage): JSX.Element[] {
 	const gridLines: JSX.Element[] = [];
 	let key = 0;
 	const x = stage.x / stage.scale;
@@ -37,5 +37,3 @@ function drawLines(stage: IStage): JSX.Element[] {
 
 	return gridLines;
 }
-
-export default drawLines;

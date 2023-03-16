@@ -3,7 +3,7 @@ import { Line } from 'react-konva';
 
 import { useFigureStore } from 'shared/lib';
 
-const DrawNose: FC = () => {
+export const DrawNose: FC = () => {
 	const points = useFigureStore((state) => state.points);
 	return (
 		<>
@@ -25,5 +25,3 @@ const DrawNose: FC = () => {
 		</>
 	);
 };
-
-export default DrawNose;

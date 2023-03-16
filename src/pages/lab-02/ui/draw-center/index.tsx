@@ -3,7 +3,7 @@ import { Circle } from 'react-konva';
 
 import { useFigureStore } from 'shared/lib';
 
-const DrawCenter: FC = () => {
+export const DrawCenter: FC = () => {
 	const pivot = useFigureStore((state) => state.pivot);
 	return (
 		<Circle
@@ -14,5 +14,3 @@ const DrawCenter: FC = () => {
 		/>
 	);
 };
-
-export default DrawCenter;

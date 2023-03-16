@@ -10,7 +10,7 @@ interface IMoveForm {
 	ky: number;
 }
 
-const ScaleForm: FC = () => {
+export const ScaleForm: FC = () => {
 	const {
 		register,
 		handleSubmit,
@@ -39,5 +39,3 @@ const ScaleForm: FC = () => {
 		</form>
 	);
 };
-
-export default ScaleForm;

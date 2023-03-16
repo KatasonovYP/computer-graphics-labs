@@ -10,7 +10,7 @@ interface IMoveForm {
 	dy: number;
 }
 
-const MoveForm: FC = () => {
+export const MoveForm: FC = () => {
 	const {
 		register,
 		handleSubmit,
@@ -39,5 +39,3 @@ const MoveForm: FC = () => {
 		</form>
 	);
 };
-
-export default MoveForm;

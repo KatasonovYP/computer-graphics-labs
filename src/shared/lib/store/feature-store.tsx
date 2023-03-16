@@ -9,7 +9,7 @@ interface IFeatureStore {
 	handleChange: (panel: EPanel) => (event: SyntheticEvent, isExpanded: boolean) => void;
 }
 
-const useFeatureStore = create<IFeatureStore>(
+export const useFeatureStore = create<IFeatureStore>(
 	(set): IFeatureStore => ({
 		expanded: EPanel.MANAGER,
 
@@ -23,5 +23,3 @@ const useFeatureStore = create<IFeatureStore>(
 		},
 	}),
 );
-
-export default useFeatureStore;

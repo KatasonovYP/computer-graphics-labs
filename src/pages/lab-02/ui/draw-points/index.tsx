@@ -3,7 +3,7 @@ import { Circle } from 'react-konva';
 
 import { useFigureStore } from 'shared/lib';
 
-const DrawPoints: FC = () => {
+export const DrawPoints: FC = () => {
 	const points = useFigureStore((state) => state.points);
 	return (
 		<>
@@ -22,5 +22,3 @@ const DrawPoints: FC = () => {
 		</>
 	);
 };
-
-export default DrawPoints;

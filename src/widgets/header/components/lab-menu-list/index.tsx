@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 
-const LabMenuList: FC = () => {
+export const LabMenuList: FC = () => {
 	return (
 		<Menu>
 			<MenuButton
@@ -28,5 +28,3 @@ const LabMenuList: FC = () => {
 		</Menu>
 	);
 };
-
-export default LabMenuList;
