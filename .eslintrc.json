@@ -86,6 +86,10 @@
     // style
     "jsx-quotes": [1, "prefer-single"],
     "semi": [1, "always"],
+    "no-multi-spaces": 1,
+    "space-in-parens": 1,
+    "no-multiple-empty-lines": 1,
+    "no-unexpected-multiline": 1,
 
     // unicorn plagin
     "unicorn/filename-case": [2, {
