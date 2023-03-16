@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Text } from '@chakra-ui/react';
 
-const Logo: FC = () => {
+export const Logo: FC = () => {
 	return (
 		<div>
 			<Text
@@ -15,5 +15,3 @@ const Logo: FC = () => {
 		</div>
 	);
 };
-
-export default Logo;

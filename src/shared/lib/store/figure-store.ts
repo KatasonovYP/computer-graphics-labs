@@ -2,11 +2,11 @@ import { create } from 'zustand';
 
 import { EAction, type IEdge, type IPoint } from 'shared/model';
 
-import Figure from '../geometry/figure';
+import { Figure } from '../geometry/figure';
 
 import data from './lab-02.json';
 
-import historyStore from './history-store';
+import { useHistoryStore } from './history-store';
 
 export interface IFigureStore {
 	points: IPoint[];
@@ -22,7 +22,7 @@ export interface IFigureStore {
 	setPivotToState: (x: number, y: number) => void;
 }
 
-const useFigureStore = create<IFigureStore>(
+export const useFigureStore = create<IFigureStore>(
 	// eslint-disable-next-line max-lines-per-function
 	(set, get): IFigureStore => ({
 		points: data.points,
@@ -30,22 +30,22 @@ const useFigureStore = create<IFigureStore>(
 		pivot: { x: 250, y: 250 },
 
 		move: (dx: number, dy: number) => {
-			historyStore.getState().pushFrame({ action: EAction.MOVE, dx, dy });
+			useHistoryStore.getState().pushFrame({ action: EAction.MOVE, dx, dy });
 			get().setMove(dx, dy);
 		},
 
 		rotate: (angle: number) => {
-			historyStore.getState().pushFrame({ action: EAction.ROTATE, angle });
+			useHistoryStore.getState().pushFrame({ action: EAction.ROTATE, angle });
 			get().setRotate(angle);
 		},
 
 		scale: (kx: number, ky: number) => {
-			historyStore.getState().pushFrame({ action: EAction.SCALE, kx, ky });
+			useHistoryStore.getState().pushFrame({ action: EAction.SCALE, kx, ky });
 			get().setScale(kx, ky);
 		},
 
 		setPivot: (x: number, y: number) => {
-			historyStore.getState().pushFrame({ action: EAction.PIVOT, ...get().pivot });
+			useHistoryStore.getState().pushFrame({ action: EAction.PIVOT, ...get().pivot });
 			get().setPivotToState(x, y);
 		},
 
@@ -86,5 +86,3 @@ const useFigureStore = create<IFigureStore>(
 		},
 	}),
 );
-
-export default useFigureStore;

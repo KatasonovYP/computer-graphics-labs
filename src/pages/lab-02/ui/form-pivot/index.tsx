@@ -10,7 +10,7 @@ interface IMoveForm {
 	y: number;
 }
 
-const PivotForm: FC = () => {
+export const PivotForm: FC = () => {
 	const {
 		register,
 		handleSubmit,
@@ -39,5 +39,3 @@ const PivotForm: FC = () => {
 		</form>
 	);
 };
-
-export default PivotForm;

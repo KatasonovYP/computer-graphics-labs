@@ -1,14 +1,14 @@
 import { type FC } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
 
-import PivotForm from './ui/form-pivot';
+import { PivotForm } from './ui/form-pivot';
 
 import { Canvas } from './ui/canvas';
-import MoveForm from './ui/form-move';
-import RotateForm from './ui/form-rotate';
-import ScaleForm from './ui/form-scale';
+import { MoveForm } from './ui/form-move';
+import { RotateForm } from './ui/form-rotate';
+import { ScaleForm } from './ui/form-scale';
 
-const Lab02: FC = () => {
+export const Lab02: FC = () => {
 	return (
 		<SimpleGrid
 			m='auto'
@@ -37,5 +37,3 @@ const Lab02: FC = () => {
 		</SimpleGrid>
 	);
 };
-
-export default Lab02;

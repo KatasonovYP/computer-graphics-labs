@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 import { EAction, type IFrame } from '../../model';
 
-import useFigureStore from './figure-store';
+import { useFigureStore } from './figure-store';
 
 interface IHistoryStore {
 	history: IFrame[];
@@ -12,7 +12,7 @@ interface IHistoryStore {
 	popFrame: () => IFrame | undefined;
 }
 
-const useHistoryStore = create<IHistoryStore>(
+export const useHistoryStore = create<IHistoryStore>(
 	// eslint-disable-next-line max-lines-per-function
 	(set, get): IHistoryStore => ({
 		history: [],
@@ -72,5 +72,3 @@ const useHistoryStore = create<IHistoryStore>(
 		},
 	}),
 );
-
-export default useHistoryStore;

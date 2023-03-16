@@ -9,7 +9,7 @@ interface IRotateForm {
 	angle: number;
 }
 
-const RotateForm: FC = () => {
+export const RotateForm: FC = () => {
 	const {
 		register,
 		handleSubmit,
@@ -37,5 +37,3 @@ const RotateForm: FC = () => {
 		</form>
 	);
 };
-
-export default RotateForm;

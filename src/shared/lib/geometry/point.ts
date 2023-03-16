@@ -1,6 +1,6 @@
 import { type IPoint } from 'shared/model';
 
-class Point {
+export class Point {
 	x: number;
 	y: number;
 
@@ -58,5 +58,3 @@ class Point {
 		return false;
 	}
 }
-
-export default Point;

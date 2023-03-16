@@ -1,8 +1,9 @@
-import { type FC, lazy } from 'react';
+import { type FC } from 'react';
 import { Route, Routes } from 'react-router';
+import { lazily } from 'react-lazily';
 
-const Home = lazy(async () => await import('./Home'));
-const Lab02 = lazy(async () => await import('./lab-02'));
+const { Home } = lazily(async () => await import('./home'));
+const { Lab02 } = lazily(async () => await import('./lab-02'));
 
 export const Routing: FC = () => {
 	return (
