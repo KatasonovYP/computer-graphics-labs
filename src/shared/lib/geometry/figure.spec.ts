@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 
-import Figure from './figure';
+import { Figure } from './figure';
 
 test('is same', () => {
 	const first = new Figure({ x: 0, y: 0 }, [
