@@ -3,7 +3,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Stack } from '@chakra-ui/react';
 
 import { ActionInput } from 'shared/components';
-import { onPromise , useFigureStore } from 'shared/lib';
+import { onPromise, useFigureStore } from 'shared/lib';
 
 interface IMoveForm {
 	x: number;
