@@ -2,11 +2,12 @@
   "semi": true,
   "trailingComma": "all",
   "singleQuote": true,
+  "jsxSingleQuote": true,
+  "useTabs": true,
   "printWidth": 120,
   "tabWidth": 4,
-  "useTabs": true,
-  "jsxSingleQuote": true,
   "singleAttributePerLine": true,
+  "arrowParens": "always",
   "overrides": [
     {
       "files": "*.json",
