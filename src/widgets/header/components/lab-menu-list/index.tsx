@@ -10,9 +10,17 @@ export const LabMenuList: FC = () => {
 				as={Button}
 				rightIcon={<ChevronDownIcon />}
 			>
-				Actions
+				Choose lab
 			</MenuButton>
 			<MenuList>
+				<MenuItem
+					disabled
+					as={Link}
+					to={'lab-01'}
+				>
+					lab 01
+				</MenuItem>
+
 				<MenuItem
 					as={Link}
 					to={'lab-02'}
@@ -27,10 +35,13 @@ export const LabMenuList: FC = () => {
 					lab 03
 				</MenuItem>
 
-				<MenuItem>Create a Copy</MenuItem>
-				<MenuItem>Mark as Draft</MenuItem>
-				<MenuItem>Delete</MenuItem>
-				<MenuItem>Attend a Workshop</MenuItem>
+				<MenuItem
+					disabled
+					as={Link}
+					to={'lab-04'}
+				>
+					lab 04
+				</MenuItem>
 			</MenuList>
 		</Menu>
 	);
