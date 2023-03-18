@@ -4,6 +4,7 @@ import { type KonvaEventObject } from 'konva/lib/Node';
 
 import { type IStage } from './model/types';
 import { drawLines } from './ui/draw-lines';
+import { Stroke } from './ui/stroke';
 
 interface Properties {
 	children: ReactNode;
@@ -56,28 +57,30 @@ export const Grid: FC<Properties> = ({ children }: Properties) => {
 	};
 
 	return (
-		<Stage
-			className='canvas'
-			draggable
-			width={stage.width}
-			height={stage.height}
-			scaleX={stage.scale}
-			scaleY={stage.scale}
-			x={stage.x}
-			y={stage.y}
-			onWheel={scaleHandler}
-			onDragMove={moveHandler}
-		>
-			<Layer
-				clipX={-stage.x / stage.scale}
-				clipY={-stage.y / stage.scale}
-				clipHeight={stage.height / stage.scale}
-				clipWidth={stage.width / stage.scale}
+		<Stroke>
+			<Stage
+				className='canvas'
+				draggable
+				width={stage.width}
+				height={stage.height}
+				scaleX={stage.scale}
+				scaleY={stage.scale}
+				x={stage.x}
+				y={stage.y}
+				onWheel={scaleHandler}
+				onDragMove={moveHandler}
 			>
-				{drawLines(stage)}
+				<Layer
+					clipX={-stage.x / stage.scale}
+					clipY={-stage.y / stage.scale}
+					clipHeight={stage.height / stage.scale}
+					clipWidth={stage.width / stage.scale}
+				>
+					{drawLines(stage)}
 
-				{children}
-			</Layer>
-		</Stage>
+					{children}
+				</Layer>
+			</Stage>
+		</Stroke>
 	);
 };

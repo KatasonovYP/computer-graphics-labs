@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Box, SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 
 import { PivotForm } from './ui/form-pivot';
 
@@ -27,13 +27,7 @@ export const Lab02: FC = () => {
 				<PivotForm />
 			</SimpleGrid>
 
-			<Box
-				border='2px'
-				borderColor={'black'}
-				borderRadius={'10px'}
-			>
-				<Canvas />
-			</Box>
+			<Canvas />
 		</SimpleGrid>
 	);
 };
