@@ -103,7 +103,12 @@
     "unicorn/filename-case": [2, {
       "cases": { "kebabCase": true }
     }],
-    "unicorn/no-null": 0
+    "unicorn/no-null": 0,
+
+    "@typescript-eslint/member-delimiter-style": [ "warn", {
+        "multiline": { "delimiter": "semi", "requireLast": true },
+        "singleline": { "delimiter": "semi", "requireLast": false }
+      }]
 
   },
   "settings": {
