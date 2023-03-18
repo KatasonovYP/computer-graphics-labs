@@ -8,21 +8,21 @@ export function dda(a: IPoint, b: IPoint): [IPoint[], number] {
 		points.push(a);
 	} else {
 		let d = {
-			x: Math.abs(a.x - b.x),
-			y: Math.abs(a.y - b.y),
+			x: Math.abs(b.x - a.x),
+			y: Math.abs(b.y - a.y),
 		};
 
 		const length: number = Math.max(d.x, d.y);
 
 		d = {
-			x: Math.abs(a.x - b.x) / length,
-			y: Math.abs(a.y - b.y) / length,
+			x: (b.x - a.x) / length,
+			y: (b.y - a.y) / length,
 		};
 
 		let x = a.x;
 		let y = a.y;
 
-		for (let index = 0; index < length + 1; ++index) {
+		for (let index = 0; index <= length; ++index) {
 			const newPoint: IPoint = Object.create(Point).init(Math.round(x), Math.round(y));
 			points.push(newPoint);
 
