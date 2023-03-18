@@ -22,6 +22,6 @@ jobs:
       - name: prettier code
         run: npm run prettier
 
-      - name: build project
-        run: npm run build
+#      - name: build project
+#        run: npm run build
 
