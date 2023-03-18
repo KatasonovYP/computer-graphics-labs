@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Stack } from '@chakra-ui/react';
 
-import { ActionInput } from 'shared/components';
+import { NumberInput } from 'shared/components';
 import { onPromise, useFigureStore } from 'shared/lib';
 
 interface IRotateForm {
@@ -25,7 +25,7 @@ export const RotateForm: FC = () => {
 	return (
 		<form onSubmit={onPromise(handleSubmit(onAction))}>
 			<Stack spacing={4}>
-				<ActionInput {...{ register, errors, name: 'angle', defaultValue: 30 }} />
+				<NumberInput {...{ register, errors, name: 'angle', defaultValue: 30 }} />
 
 				<Button
 					variant='solid'

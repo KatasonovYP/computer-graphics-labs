@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { Button, Stack } from '@chakra-ui/react';
 
-import { ActionInput } from 'shared/components';
+import { NumberInput } from 'shared/components';
 import { onPromise, useFigureStore } from 'shared/lib';
 
 interface IMoveForm {
@@ -26,8 +26,8 @@ export const ScaleForm: FC = () => {
 	return (
 		<form onSubmit={onPromise(handleSubmit(onAction))}>
 			<Stack spacing={4}>
-				<ActionInput {...{ register, errors, name: 'kx', defaultValue: 1.2 }} />
-				<ActionInput {...{ register, errors, name: 'ky', defaultValue: 1.2 }} />
+				<NumberInput {...{ register, errors, name: 'kx', defaultValue: 1.2 }} />
+				<NumberInput {...{ register, errors, name: 'ky', defaultValue: 1.2 }} />
 
 				<Button
 					variant='solid'

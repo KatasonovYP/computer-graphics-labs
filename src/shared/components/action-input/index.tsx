@@ -11,7 +11,7 @@ interface Properties<T extends FieldValues> {
 	defaultValue?: number;
 }
 
-export const ActionInput: FC<Properties<any>> = <T extends FieldValues>({
+export const NumberInput: FC<Properties<any>> = <T extends FieldValues>({
 	name,
 	register,
 	errors,

@@ -2,12 +2,12 @@ import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { SimpleGrid, Stack } from '@chakra-ui/react';
 
-import { ActionInput, SubmitButton } from 'shared/components';
+import { NumberInput, SubmitButton } from 'shared/components';
 import { onPromise } from 'shared/lib';
 
 import { useLinesStore } from '../store/lines-store';
 import { type IPoint, Point } from '../model';
-import { dda } from '../lib/logic/dda';
+import { brezenhemInteger } from '../lib/logic/brezenhem-integer';
 
 interface ISetLinesForm {
 	x1: number;
@@ -26,10 +26,10 @@ export const SetLineForm: FC = () => {
 	const pushLine = useLinesStore((state) => state.push);
 
 	const onAction: SubmitHandler<ISetLinesForm> = (data): void => {
-		const a: IPoint = Object.create(Point).init(+data.x1, +data.y1);
-		const b: IPoint = Object.create(Point).init(+data.x2, +data.y2);
+		const a: IPoint = Point.new(+data.x1, +data.y1);
+		const b: IPoint = Point.new(+data.x2, +data.y2);
 
-		const [pixels, steps] = dda(a, b);
+		const [pixels, steps] = brezenhemInteger(a, b);
 		pushLine({ pixels, color: '#f00' });
 		console.log(steps);
 	};
@@ -43,12 +43,12 @@ export const SetLineForm: FC = () => {
 				spacing={4}
 			>
 				<Stack spacing={2}>
-					<ActionInput {...{ register, errors, name: 'x1', defaultValue: 10 }} />
-					<ActionInput {...{ register, errors, name: 'y1', defaultValue: 15 }} />
+					<NumberInput {...{ register, errors, name: 'x1', defaultValue: 10 }} />
+					<NumberInput {...{ register, errors, name: 'y1', defaultValue: 15 }} />
 				</Stack>
 				<Stack spacing={2}>
-					<ActionInput {...{ register, errors, name: 'x2', defaultValue: 75 }} />
-					<ActionInput {...{ register, errors, name: 'y2', defaultValue: 200 }} />
+					<NumberInput {...{ register, errors, name: 'x2', defaultValue: 75 }} />
+					<NumberInput {...{ register, errors, name: 'y2', defaultValue: 200 }} />
 				</Stack>
 				<SubmitButton>Отрисовать</SubmitButton>
 			</SimpleGrid>
