@@ -2,9 +2,9 @@ import { type FC } from 'react';
 
 import { Grid } from 'entities';
 
-import { DrawCenter } from '../draw-center';
-import { DrawEdges } from '../draw-edges';
-import { DrawNose } from '../draw-noze';
+import { DrawCenter } from '../figures/draw-center';
+import { DrawEdges } from '../figures/draw-edges';
+import { DrawNose } from '../figures/draw-noze';
 
 export const Canvas: FC = () => {
 	return (
