@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 
-import { ActionInput } from 'shared/components';
+import { ActionInput, SubmitButton } from 'shared/components';
 import { onPromise, useFigureStore } from 'shared/lib';
 
 interface IMoveForm {
@@ -29,12 +29,7 @@ export const MoveForm: FC = () => {
 				<ActionInput {...{ register, errors, name: 'dx', defaultValue: 10 }} />
 				<ActionInput {...{ register, errors, name: 'dy', defaultValue: 15 }} />
 
-				<Button
-					variant='solid'
-					type='submit'
-				>
-					Переместить
-				</Button>
+				<SubmitButton>Переместить</SubmitButton>
 			</Stack>
 		</form>
 	);
