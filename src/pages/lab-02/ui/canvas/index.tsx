@@ -7,9 +7,8 @@ import { DrawEdges } from '../draw-edges';
 import { DrawNose } from '../draw-noze';
 
 export const Canvas: FC = () => {
-	const width = Math.min(window.screen.availWidth - 20, 500);
 	return (
-		<Grid sideLength={width}>
+		<Grid>
 			<DrawEdges />
 			{/* <DrawPoints /> */}
 			<DrawNose />

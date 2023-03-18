@@ -20,6 +20,13 @@ export const LabMenuList: FC = () => {
 					lab 02
 				</MenuItem>
 
+				<MenuItem
+					as={Link}
+					to={'lab-03'}
+				>
+					lab 03
+				</MenuItem>
+
 				<MenuItem>Create a Copy</MenuItem>
 				<MenuItem>Mark as Draft</MenuItem>
 				<MenuItem>Delete</MenuItem>

@@ -6,11 +6,11 @@ import { type IStage } from './model/types';
 import { drawLines } from './ui/draw-lines';
 
 interface Properties {
-	sideLength: number;
 	children: ReactNode;
 }
 
-export const Grid: FC<Properties> = ({ sideLength, children }: Properties) => {
+export const Grid: FC<Properties> = ({ children }: Properties) => {
+	const sideLength = Math.min(window.screen.availWidth - 20, 500);
 	const [stage, setStage] = useState<IStage>({
 		x: 0,
 		y: 0,
