@@ -4,44 +4,38 @@ import { Input } from '@chakra-ui/react';
 
 import { numberRegExp } from 'shared/config';
 
-interface Properties<T extends FieldValues> {
+import { TextAlert } from '../text-alert';
+
+interface NumberInputProperties<T extends FieldValues> {
 	name: Path<T>;
 	register: UseFormRegister<T>;
 	errors: FieldErrors<T>;
 	defaultValue?: number;
 }
 
-export const NumberInput: FC<Properties<any>> = <T extends FieldValues>({
+// replace any to Record<string, unknown>
+type customFC = FC<NumberInputProperties<any>>;
+
+export const NumberInput: customFC = <T extends FieldValues>({
 	name,
 	register,
 	errors,
 	defaultValue,
-}: Properties<T>) => {
+}: NumberInputProperties<T>) => {
+	console.log();
 	return (
 		<>
 			<Input
 				id='standard-basic'
 				placeholder={`Введите ${name}`}
+				errorBorderColor='red.300'
+				isInvalid={errors[name] !== undefined}
 				variant='flushed'
 				defaultValue={defaultValue}
 				{...register(name, { required: true, pattern: numberRegExp })}
 			/>
-			{errors[name]?.type === 'required' && (
-				<p
-					className='err'
-					role='alert'
-				>
-					Поле {name} необходимо
-				</p>
-			)}
-			{errors[name]?.type === 'pattern' && (
-				<p
-					className='err'
-					role='alert'
-				>
-					Введите корректное число
-				</p>
-			)}
+			{errors[name]?.type === 'required' && <TextAlert>Поле {name} необходимо</TextAlert>}
+			{errors[name]?.type === 'pattern' && <TextAlert>Введите корректное число</TextAlert>}
 		</>
 	);
 };
