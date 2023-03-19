@@ -1,11 +1,23 @@
-import { Center, Input, Popover, PopoverBody, PopoverContent } from '@chakra-ui/react';
+import { Center, Popover, PopoverBody, PopoverContent } from '@chakra-ui/react';
 import { type FC, useState } from 'react';
 
-import { ColorPopoverHeader } from './ui/color-popover-header';
-import { ColorPopoverTrigger } from './ui/color-popover-grigger';
-import { ColorPopoverPalette } from './ui/color-popover-palette';
+import { type FieldValues, type Path, type UseFormRegister, type UseFormSetValue } from 'react-hook-form';
 
-export const ColorPicker: FC = () => {
+import { ColorPopoverHeader, ColorPopoverInput, ColorPopoverPalette, ColorPopoverTrigger } from './ui';
+
+interface Properties<T extends FieldValues> {
+	name: Path<T>;
+	register: UseFormRegister<T>;
+	setValue: UseFormSetValue<T>;
+	defaultValue?: string;
+}
+
+export const ColorPicker: FC<Properties<any>> = <T extends FieldValues>({
+	name,
+	register,
+	setValue,
+	defaultValue,
+}: Properties<T>) => {
 	const [color, setColor] = useState('gray.500');
 
 	return (
@@ -15,17 +27,8 @@ export const ColorPicker: FC = () => {
 				<PopoverContent width='170px'>
 					<ColorPopoverHeader color={color} />
 					<PopoverBody height='120px'>
-						<ColorPopoverPalette setColor={setColor} />
-						<Input
-							borderRadius={3}
-							marginTop={3}
-							placeholder='red.100'
-							size='sm'
-							value={color}
-							onChange={(event) => {
-								setColor(event.target.value);
-							}}
-						/>
+						<ColorPopoverPalette {...{ setValue, name, setColor }} />
+						<ColorPopoverInput {...{ register, name, color, setColor }} />
 					</PopoverBody>
 				</PopoverContent>
 			</Popover>
