@@ -1,2 +1,2 @@
 export { type IPoint, Point } from './point';
-export { type ILine } from './types';
+export { type ILine, EMethod } from './types';

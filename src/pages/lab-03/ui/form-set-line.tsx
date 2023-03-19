@@ -2,18 +2,20 @@ import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import { SimpleGrid, Stack } from '@chakra-ui/react';
 
-import { NumberInput, SubmitButton } from 'shared/components';
+import { ColorPicker, InputRadio, NumberInput, SubmitButton } from 'shared/components';
 import { onPromise } from 'shared/lib';
 
 import { useLinesStore } from '../store/lines-store';
-import { type IPoint, Point } from '../model';
-import { brezenhemInteger } from '../lib/logic/brezenhem-integer';
+import { EMethod, type IPoint, Point } from '../model';
+import { getMethod } from '../lib/logic';
 
 interface ISetLinesForm {
 	x1: number;
 	y1: number;
 	x2: number;
 	y2: number;
+	method: EMethod;
+	color: string;
 }
 
 export const SetLineForm: FC = () => {
@@ -29,9 +31,13 @@ export const SetLineForm: FC = () => {
 		const a: IPoint = Point.new(+data.x1, +data.y1);
 		const b: IPoint = Point.new(+data.x2, +data.y2);
 
-		const [pixels, steps] = brezenhemInteger(a, b);
+		const method = getMethod(data.method);
+
+		const [pixels, steps] = method(a, b);
 		pushLine({ pixels, color: '#f00' });
+
 		console.log(steps);
+		console.log(data.color);
 	};
 
 	return (
@@ -49,6 +55,12 @@ export const SetLineForm: FC = () => {
 				<Stack spacing={2}>
 					<NumberInput {...{ register, errors, name: 'x2', defaultValue: 75 }} />
 					<NumberInput {...{ register, errors, name: 'y2', defaultValue: 200 }} />
+				</Stack>
+				<Stack spacing={2}>
+					<InputRadio
+						{...{ register, errors, name: 'method', choices: EMethod, defaultValue: EMethod.DDA }}
+					/>
+					<ColorPicker />
 				</Stack>
 				<SubmitButton>Отрисовать</SubmitButton>
 			</SimpleGrid>
