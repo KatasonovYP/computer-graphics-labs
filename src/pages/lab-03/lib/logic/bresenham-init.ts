@@ -16,7 +16,7 @@ export function bresenhamInit(startPoint: IPoint, endPoint: IPoint): { step: I2D
 	};
 	const absDiff = {
 		x: Math.abs(diff.x),
-		y: Math.abs(diff.x),
+		y: Math.abs(diff.y),
 	};
 
 	let isSwapped = false;
