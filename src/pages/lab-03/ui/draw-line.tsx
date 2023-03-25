@@ -25,6 +25,7 @@ export const DrawLine: FC<Properties> = ({ line }: Properties) => {
 						key={key}
 						x={pixel.x}
 						y={pixel.y}
+						opacity={pixel.intensity / 100}
 						fill={line.currentColor}
 						width={1}
 						height={1}
