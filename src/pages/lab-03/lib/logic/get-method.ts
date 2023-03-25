@@ -1,25 +1,25 @@
 import { EMethod, type IMethodFunctionType } from '../../model';
 
 import { dda } from './dda';
-import { brezenhemInteger } from './brezenhem-integer';
-import { brezenhemSmooth } from './brezenhem-smooth';
-import { brezenhemFloat } from './brezenhem-float';
+import { bresenhamInteger } from './bresenham-integer';
+import { bresenhamSmooth } from './bresenham-smooth';
+import { bresenhamFloat } from './bresenham-float';
 
 export function getMethod(name: EMethod): IMethodFunctionType {
 	switch (name) {
 		case EMethod.DDA: {
 			return dda;
 		}
-		case EMethod.BREZENHEIM_INT: {
-			return brezenhemInteger;
+		case EMethod.BRESENHAM_INT: {
+			return bresenhamInteger;
 		}
 
-		case EMethod.BREZENHEIM_FLOAT: {
-			return brezenhemFloat;
+		case EMethod.BRESENHAM_FLOAT: {
+			return bresenhamFloat;
 		}
 
-		case EMethod.BREZENHEIM_SMOOTH: {
-			return brezenhemSmooth;
+		case EMethod.BRESENHAM_SMOOTH: {
+			return bresenhamSmooth;
 		}
 
 		default: {

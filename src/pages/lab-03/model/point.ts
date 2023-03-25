@@ -28,6 +28,7 @@ export const Point: IPoint = {
 		newPoint.x = this.x;
 		newPoint.y = this.y;
 		newPoint.parent = this.parent;
+		newPoint.intensity = this.intensity;
 		return newPoint;
 	},
 

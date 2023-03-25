@@ -11,7 +11,7 @@ export type IMethodFunctionType = (a: IPoint, b: IPoint) => [IPoint[], number];
 
 export enum EMethod {
 	DDA = 'DDA',
-	BREZENHEIM_INT = 'brezenheim-integer',
-	BREZENHEIM_FLOAT = 'brezenheim-float',
-	BREZENHEIM_SMOOTH = 'brezenheim-smooth',
+	BRESENHAM_INT = 'bresenham-integer',
+	BRESENHAM_FLOAT = 'bresenham-float',
+	BRESENHAM_SMOOTH = 'bresenham-smooth',
 }
