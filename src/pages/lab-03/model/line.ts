@@ -14,6 +14,7 @@ export interface ILine {
 	method: EMethod;
 
 	new: (a: IPoint, b: IPoint, color: string, method: EMethod) => ILine;
+	eq: (target: ILine) => boolean;
 	draw: () => void;
 	rotate: (angle: number) => ILine;
 }
@@ -38,6 +39,12 @@ export const Line: ILine = {
 		newLine.draw();
 		newLine.id = ++Line.id;
 		return newLine;
+	},
+
+	eq(target) {
+		const [a1, b1] = [this.firstPoint, this.secondPoint];
+		const [a2, b2] = [target.firstPoint, target.secondPoint];
+		return (a1.eq(a2) && b1.eq(b2)) || (a1.eq(b2) && b1.eq(a2));
 	},
 
 	draw() {

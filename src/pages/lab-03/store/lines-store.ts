@@ -30,14 +30,8 @@ export const useLinesStore = create<ILinesStore>(
 		hovered: undefined,
 
 		push: (target) => {
-			const filtered = get().lines.filter((line) => {
-				const [a1, b1] = [target.firstPoint, target.secondPoint];
-				const [a2, b2] = [line.firstPoint, line.secondPoint];
-				const isEq = (a1.eq(a2) && b1.eq(b2)) || (a1.eq(b2) && b1.eq(a2));
-				return !isEq;
-			});
+			const filtered = get().lines.filter((line) => !line.eq(target));
 			get().setLines([...filtered, target]);
-			console.log(get().lines);
 		},
 
 		setLines: (lines) => {
