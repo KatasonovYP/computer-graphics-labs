@@ -24,7 +24,7 @@ interface Properties<T extends FieldValues> {
 
 type customFC = FC<Properties<Record<string, unknown>>>;
 
-export const ColorPopoverPalette: customFC = <T extends FieldValues>({ setValue, setColor }: Properties<T>) => {
+export const ColorPopoverPalette: customFC = <T extends FieldValues>({ setValue, name, setColor }: Properties<T>) => {
 	return (
 		<SimpleGrid
 			columns={5}
@@ -43,7 +43,7 @@ export const ColorPopoverPalette: customFC = <T extends FieldValues>({ setValue,
 					_hover={{ background: c }}
 					onClick={() => {
 						setColor(c);
-						setValue('color', c);
+						setValue(name, c);
 					}}
 				></Button>
 			))}

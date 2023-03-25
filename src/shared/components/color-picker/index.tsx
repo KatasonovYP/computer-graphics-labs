@@ -16,9 +16,9 @@ export const ColorPicker: FC<Properties<any>> = <T extends FieldValues>({
 	name,
 	register,
 	setValue,
-	defaultValue,
+	defaultValue = 'gray.500',
 }: Properties<T>) => {
-	const [color, setColor] = useState('gray.500');
+	const [color, setColor] = useState(defaultValue);
 
 	return (
 		<Center marginTop={5}>

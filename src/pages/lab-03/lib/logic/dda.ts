@@ -23,10 +23,15 @@ export function dda(a: IPoint, b: IPoint): [IPoint[], number] {
 		let y = a.y;
 
 		for (let index = 0; index <= length; ++index) {
-			const newPoint: IPoint = Object.create(Point).init(Math.round(x), Math.round(y));
+			const roundX = Math.round(x);
+			const roundY = Math.round(y);
+			const roundNextX = Math.round(x + d.x);
+			const roundNextY = Math.round(y + d.y);
+
+			const newPoint: IPoint = Point.new(roundX, roundY);
 			points.push(newPoint);
 
-			if (Math.round(x + d.x) !== Math.round(x) && Math.round(y + d.y) !== Math.round(y)) {
+			if (roundNextX !== roundX && roundNextY !== roundY) {
 				++steps;
 			}
 

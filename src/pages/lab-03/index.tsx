@@ -1,8 +1,7 @@
 import { type FC } from 'react';
-import { SimpleGrid } from '@chakra-ui/react';
+import { SimpleGrid, Stack } from '@chakra-ui/react';
 
-import { SetLineForm } from './ui/form-set-line';
-import { Canvas } from './ui';
+import { Canvas, RotateLineForm, SetLineForm } from './ui';
 
 export const Lab03: FC = () => {
 	return (
@@ -12,7 +11,10 @@ export const Lab03: FC = () => {
 			columns={[1, null, 2]}
 			spacing={4}
 		>
-			<SetLineForm />
+			<Stack spacing={8}>
+				<SetLineForm />
+				<RotateLineForm />
+			</Stack>
 			<Canvas />
 		</SimpleGrid>
 	);

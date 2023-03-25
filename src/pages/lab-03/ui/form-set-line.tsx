@@ -1,13 +1,12 @@
 import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { SimpleGrid, Stack } from '@chakra-ui/react';
+import { SimpleGrid, Stack, Text } from '@chakra-ui/react';
 
 import { ColorPicker, InputRadio, NumberInput, SubmitButton } from 'shared/components';
-import { onPromise } from 'shared/lib';
+import { colorConverter, onPromise } from 'shared/lib';
 
 import { useLinesStore } from '../store/lines-store';
-import { EMethod, type IPoint, Point } from '../model';
-import { getMethod } from '../lib/logic';
+import { EMethod, type IPoint, Line, Point } from '../model';
 
 interface ISetLinesForm {
 	x1: number;
@@ -23,6 +22,7 @@ export const SetLineForm: FC = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
+		setValue,
 	} = useForm<ISetLinesForm>();
 
 	const pushLine = useLinesStore((state) => state.push);
@@ -31,13 +31,10 @@ export const SetLineForm: FC = () => {
 		const a: IPoint = Point.new(+data.x1, +data.y1);
 		const b: IPoint = Point.new(+data.x2, +data.y2);
 
-		const method = getMethod(data.method);
+		const hex = colorConverter(data.color);
 
-		const [pixels, steps] = method(a, b);
-		pushLine({ pixels, color: '#f00' });
-
-		console.log(steps);
-		console.log(data.color);
+		const line = Line.new(a, b, hex, data.method);
+		pushLine(line);
 	};
 
 	return (
@@ -57,10 +54,15 @@ export const SetLineForm: FC = () => {
 					<NumberInput {...{ register, errors, name: 'y2', defaultValue: 200 }} />
 				</Stack>
 				<Stack spacing={2}>
-					<InputRadio
-						{...{ register, errors, name: 'method', choices: EMethod, defaultValue: EMethod.DDA }}
-					/>
-					<ColorPicker />
+					<InputRadio {...{ register, errors, name: 'method', choices: EMethod }} />
+				</Stack>
+				<Stack
+					spacing={2}
+					direction='row'
+					align='center'
+				>
+					<Text textAlign='center'>Выбор цвета</Text>
+					<ColorPicker {...{ setValue, register, name: 'color' }} />
 				</Stack>
 				<SubmitButton>Отрисовать</SubmitButton>
 			</SimpleGrid>

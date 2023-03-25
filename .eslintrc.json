@@ -104,7 +104,14 @@
       "cases": { "kebabCase": true }
     }],
     "unicorn/no-null": 0,
+    "unicorn/no-useless-undefined": 0,
+//    "unicorn/no-negated-condition": 0,
 
+    // typescript
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/no-explicit-any": 1,
+    "@typescript-eslint/consistent-type-imports": 1,
+    "@typescript-eslint/strict-boolean-expressions": 0,
     "@typescript-eslint/member-delimiter-style": [ "warn", {
         "multiline": { "delimiter": "semi", "requireLast": true },
         "singleline": { "delimiter": "semi", "requireLast": false }

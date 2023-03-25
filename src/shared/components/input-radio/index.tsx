@@ -17,7 +17,7 @@ export const InputRadio: FC<Properties<any>> = <T extends FieldValues>({
 	register,
 	errors,
 	choices,
-	defaultValue,
+	defaultValue = Object.values(choices)[0],
 }: Properties<T>) => {
 	return (
 		<>
