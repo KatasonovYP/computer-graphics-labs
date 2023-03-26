@@ -26,6 +26,7 @@ export const SetLineForm: FC = () => {
 	} = useForm<ISetLinesForm>();
 
 	const pushLine = useLinesStore((state) => state.push);
+	const setTarget = useLinesStore((state) => state.setTarget);
 
 	const onAction: SubmitHandler<ISetLinesForm> = (data): void => {
 		const a: IPoint = Point.new(+data.x1, +data.y1);
@@ -34,6 +35,7 @@ export const SetLineForm: FC = () => {
 		const hex = colorConverter(data.color);
 
 		const line = Line.new(a, b, hex, data.method);
+		setTarget(line);
 		pushLine(line);
 	};
 

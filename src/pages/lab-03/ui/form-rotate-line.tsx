@@ -21,14 +21,15 @@ export const RotateLineForm: FC = () => {
 	const setChoosing = useLinesStore((state) => state.setChoosing);
 	const currentLine = useLinesStore((state) => state.target);
 	const pushLine = useLinesStore((state) => state.push);
+	const spectrum = useLinesStore((state) => state.spectrum);
 
 	// eslint-disable-next-line unicorn/consistent-function-scoping
 	const onAction: SubmitHandler<IRotateLineForm> = (data): void => {
 		if (currentLine) {
-			currentLine.rotate(+data.angle);
-			currentLine.draw();
-			pushLine(currentLine);
-			setChoosing(false);
+			spectrum(+data.angle);
+			// currentLine.rotate(+data.angle);
+			// pushLine(currentLine);
+			// setChoosing(false);
 		}
 	};
 
