@@ -18,9 +18,7 @@ export const RotateLineForm: FC = () => {
 		formState: { errors },
 	} = useForm<IRotateLineForm>();
 
-	const setChoosing = useLinesStore((state) => state.setChoosing);
 	const currentLine = useLinesStore((state) => state.target);
-	const pushLine = useLinesStore((state) => state.push);
 	const spectrum = useLinesStore((state) => state.spectrum);
 
 	// eslint-disable-next-line unicorn/consistent-function-scoping
@@ -43,14 +41,6 @@ export const RotateLineForm: FC = () => {
 			>
 				<Stack spacing={2}>
 					<NumberInput {...{ register, errors, name: 'angle', defaultValue: 30 }} />
-					<Button
-						type='button'
-						onClick={() => {
-							setChoosing(true);
-						}}
-					>
-						Выбрать линию
-					</Button>
 				</Stack>
 				<SubmitButton>Повернуть</SubmitButton>
 			</SimpleGrid>
