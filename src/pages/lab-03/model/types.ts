@@ -11,8 +11,8 @@ export type IMethodFunctionType = (startPoint: IPoint, endPoint: IPoint) => IPoi
 
 export enum EMethod {
 	DDA = 'DDA',
-	BRESENHAM_INT = 'bresenham-integer',
-	BRESENHAM_FLOAT = 'bresenham-float',
-	BRESENHAM_SMOOTH = 'bresenham-smooth',
-	WU = 'vu',
+	BRESENHAM_INT = 'Bresenham-integer',
+	BRESENHAM_FLOAT = 'Bresenham-float',
+	BRESENHAM_SMOOTH = 'Bresenham-smooth',
+	WU = 'Wu',
 }

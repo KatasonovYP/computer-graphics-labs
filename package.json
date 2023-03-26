@@ -27,6 +27,7 @@
     "react-konva": "^18.2.5",
     "react-lazily": "^0.9.1",
     "react-router-dom": "^6.9.0",
+    "recharts": "^2.5.0",
     "vite-tsconfig-paths": "^4.0.7",
     "zustand": "^4.3.5"
   },
