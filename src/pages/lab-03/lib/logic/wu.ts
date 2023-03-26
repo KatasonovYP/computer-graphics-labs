@@ -1,8 +1,7 @@
 import { type IPoint, Point } from '../../model';
 
-export function wu(startPoint: IPoint, endPoint: IPoint): [IPoint[], number] {
+export function wu(startPoint: IPoint, endPoint: IPoint): IPoint[] {
 	const pixels: IPoint[] = [];
-	const steps: number = 10;
 
 	function drawPoint(steep: boolean, x: number, y: number, intensity: number): void {
 		if (steep) {
@@ -40,5 +39,5 @@ export function wu(startPoint: IPoint, endPoint: IPoint): [IPoint[], number] {
 		y += gradient;
 	}
 
-	return [pixels, steps];
+	return pixels;
 }

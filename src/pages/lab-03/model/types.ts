@@ -7,7 +7,7 @@ export interface ILine {
 	pixels: IPoint[];
 }
 
-export type IMethodFunctionType = (startPoint: IPoint, endPoint: IPoint) => [IPoint[], number];
+export type IMethodFunctionType = (startPoint: IPoint, endPoint: IPoint) => IPoint[];
 
 export enum EMethod {
 	DDA = 'DDA',

@@ -1,44 +1,36 @@
 import { type IPoint, Point } from '../../model';
 
-export function dda(a: IPoint, b: IPoint): [IPoint[], number] {
+export function dda(startPoint: IPoint, endPoint: IPoint): IPoint[] {
 	const points: IPoint[] = [];
-	let steps = 0;
 
-	if (a.eq(b)) {
-		points.push(a);
+	if (startPoint.eq(endPoint)) {
+		points.push(startPoint);
 	} else {
-		let d = {
-			x: Math.abs(b.x - a.x),
-			y: Math.abs(b.y - a.y),
+		const absDiff = {
+			x: Math.abs(endPoint.x - startPoint.x),
+			y: Math.abs(endPoint.y - startPoint.y),
 		};
 
-		const length: number = Math.max(d.x, d.y);
+		const length: number = Math.max(absDiff.x, absDiff.y);
 
-		d = {
-			x: (b.x - a.x) / length,
-			y: (b.y - a.y) / length,
+		const step = {
+			x: (endPoint.x - startPoint.x) / length,
+			y: (endPoint.y - startPoint.y) / length,
 		};
 
-		let x = a.x;
-		let y = a.y;
+		let x = startPoint.x;
+		let y = startPoint.y;
 
 		for (let index = 0; index <= length; ++index) {
 			const roundX = Math.round(x);
 			const roundY = Math.round(y);
-			const roundNextX = Math.round(x + d.x);
-			const roundNextY = Math.round(y + d.y);
 
-			const newPoint: IPoint = Point.new(roundX, roundY);
-			points.push(newPoint);
+			points.push(Point.new(roundX, roundY));
 
-			if (roundNextX !== roundX && roundNextY !== roundY) {
-				++steps;
-			}
-
-			x += d.x;
-			y += d.y;
+			x += step.x;
+			y += step.y;
 		}
 	}
 
-	return [points, steps];
+	return points;
 }

@@ -9,7 +9,6 @@ export interface ILine {
 	color: string;
 	currentColor: string;
 	pixels: IPoint[];
-	steps: number;
 	method: EMethod;
 
 	new: (a: IPoint, b: IPoint, color: string, method: EMethod) => ILine;
@@ -25,7 +24,6 @@ export const Line: ILine = {
 	color: '#f00',
 	currentColor: '#f00',
 	pixels: [Point.new(0, 0)],
-	steps: 0,
 	method: EMethod.DDA,
 
 	new(a, b, color = '#f00', method = EMethod.DDA) {
@@ -43,11 +41,10 @@ export const Line: ILine = {
 		const newLine: ILine = Object.create(Line);
 		newLine.firstPoint = this.firstPoint.copy();
 		newLine.secondPoint = this.secondPoint.copy();
-		const { color, method, steps } = this;
+		const { color, method } = this;
 		newLine.color = color;
 		newLine.currentColor = color;
 		newLine.method = method;
-		newLine.steps = steps;
 		newLine.draw();
 		return newLine;
 	},
@@ -60,7 +57,7 @@ export const Line: ILine = {
 
 	draw() {
 		const drawMethod = getMethod(this.method);
-		[this.pixels, this.steps] = drawMethod(this.firstPoint, this.secondPoint);
+		this.pixels = drawMethod(this.firstPoint, this.secondPoint);
 	},
 
 	rotate(angle) {
