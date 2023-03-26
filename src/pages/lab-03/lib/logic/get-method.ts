@@ -4,6 +4,7 @@ import { dda } from './dda';
 import { bresenhamInteger } from './bresenham-integer';
 import { bresenhamSmooth } from './bresenham-smooth';
 import { bresenhamFloat } from './bresenham-float';
+import { wu } from './wu';
 
 export function getMethod(name: EMethod): IMethodFunctionType {
 	switch (name) {
@@ -20,6 +21,10 @@ export function getMethod(name: EMethod): IMethodFunctionType {
 
 		case EMethod.BRESENHAM_SMOOTH: {
 			return bresenhamSmooth;
+		}
+
+		case EMethod.WU: {
+			return wu;
 		}
 
 		default: {

@@ -4,7 +4,6 @@ import { type IPoint, Point } from './point';
 import { EMethod } from './types';
 
 export interface ILine {
-	id: number;
 	firstPoint: IPoint;
 	secondPoint: IPoint;
 	color: string;
@@ -14,13 +13,13 @@ export interface ILine {
 	method: EMethod;
 
 	new: (a: IPoint, b: IPoint, color: string, method: EMethod) => ILine;
+	copy: () => ILine;
 	eq: (target: ILine) => boolean;
 	draw: () => void;
 	rotate: (angle: number) => ILine;
 }
 
 export const Line: ILine = {
-	id: 0,
 	firstPoint: Point.new(0, 0),
 	secondPoint: Point.new(0, 0),
 	color: '#f00',
@@ -37,7 +36,19 @@ export const Line: ILine = {
 		newLine.currentColor = color;
 		newLine.method = method;
 		newLine.draw();
-		newLine.id = ++Line.id;
+		return newLine;
+	},
+
+	copy() {
+		const newLine: ILine = Object.create(Line);
+		newLine.firstPoint = this.firstPoint.copy();
+		newLine.secondPoint = this.secondPoint.copy();
+		const { color, method, steps } = this;
+		newLine.color = color;
+		newLine.currentColor = color;
+		newLine.method = method;
+		newLine.steps = steps;
+		newLine.draw();
 		return newLine;
 	},
 
@@ -49,12 +60,12 @@ export const Line: ILine = {
 
 	draw() {
 		const drawMethod = getMethod(this.method);
-		console.log(this.method);
 		[this.pixels, this.steps] = drawMethod(this.firstPoint, this.secondPoint);
 	},
 
 	rotate(angle) {
 		this.secondPoint.rotate(this.firstPoint, angle);
+		this.draw();
 		return this;
 	},
 };
