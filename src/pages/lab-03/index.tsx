@@ -5,7 +5,7 @@ import { lazily } from 'react-lazily';
 
 import { Canvas, FormClear, RotateLineForm, SetLineForm } from './ui';
 
-const { ModalStepsInfo } = lazily(async () => await import('./ui/modal-steps-info'));
+const { ModalChartsSteps } = lazily(async () => await import('./ui/modal-charts-steps'));
 
 export const Lab03: FC = () => {
 	return (

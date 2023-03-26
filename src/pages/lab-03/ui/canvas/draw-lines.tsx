@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 
-import { useLinesStore } from '../store/lines-store';
+import { useLinesStore } from '../../store/lines-store';
 
 import { DrawLine } from './draw-line';
 

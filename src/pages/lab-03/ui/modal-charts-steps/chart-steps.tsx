@@ -3,7 +3,7 @@ import { type FC } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Stack, Text } from '@chakra-ui/react';
 
-import { type EMethod } from '../model';
+import { type EMethod } from '../../model';
 
 import { getStepsData } from './get-steps-data';
 

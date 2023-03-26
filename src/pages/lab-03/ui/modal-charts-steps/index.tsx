@@ -14,11 +14,11 @@ import { type FC } from 'react';
 
 import { lazily } from 'react-lazily';
 
-import { EMethod } from '../model';
+import { EMethod } from '../../model';
 
 const { ChartSteps } = lazily(async () => await import('./chart-steps'));
 
-export const ModalStepsInfo: FC = () => {
+export const ModalChartsSteps: FC = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	return (
 		<>

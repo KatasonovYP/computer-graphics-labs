@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 import { Rect } from 'react-konva';
 
-import { type ILine } from '../model';
-import { useLinesStore } from '../store/lines-store';
+import { type ILine } from '../../model';
+import { useLinesStore } from '../../store/lines-store';
 
 interface Properties {
 	line: ILine;

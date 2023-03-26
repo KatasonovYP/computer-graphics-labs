@@ -1,5 +1,5 @@
-import { type EMethod, Point } from '../model';
-import { getMethod, getSteps } from '../lib/logic';
+import { type EMethod, Point } from '../../model';
+import { getMethod, getSteps } from '../../lib/logic';
 
 interface IStepsFrame {
 	angle: number;
