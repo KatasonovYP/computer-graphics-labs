@@ -6,6 +6,8 @@ interface ILinesStore {
 	color: string;
 	lines: ILine[];
 
+	spectrum: (angle: number) => void;
+
 	target: ILine | undefined;
 	setTarget: (target: ILine) => void;
 	setTargetState: (target: ILine) => void;
@@ -18,6 +20,7 @@ interface ILinesStore {
 	setChoosing: (choosing: boolean) => void;
 
 	push: (target: ILine) => void;
+	clear: () => void;
 	setLines: (target: ILine[]) => void;
 }
 
@@ -29,9 +32,27 @@ export const useLinesStore = create<ILinesStore>(
 		choosing: false,
 		hovered: undefined,
 
+		spectrum: (angle) => {
+			const target = get().target;
+			if (!target) return;
+			let last = target;
+			const lines: ILine[] = [];
+			for (let index = 0; index < 360 / angle; ++index) {
+				last = last.copy();
+				last.rotate(angle);
+				lines.push(last);
+			}
+			get().setLines([...get().lines, ...lines]);
+		},
+
 		push: (target) => {
-			const filtered = get().lines.filter((line) => !line.eq(target));
+			const lines = Object.values(get().lines);
+			const filtered = lines.filter((line) => !line.eq(target));
 			get().setLines([...filtered, target]);
+		},
+
+		clear: () => {
+			get().setLines([]);
 		},
 
 		setLines: (lines) => {
@@ -43,7 +64,7 @@ export const useLinesStore = create<ILinesStore>(
 			if (oldTarget) {
 				oldTarget.currentColor = oldTarget.color;
 			}
-			target.currentColor = '#00f';
+			// target.currentColor = '#00f';
 			get().setTargetState(target);
 		},
 
