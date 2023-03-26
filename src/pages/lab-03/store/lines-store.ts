@@ -37,7 +37,7 @@ export const useLinesStore = create<ILinesStore>(
 			if (!target) return;
 			let last = target;
 			const lines: ILine[] = [];
-			for (let index = 0; index < 360 / angle; ++index) {
+			for (let index = 0; index < (360 - angle) / angle; ++index) {
 				last = last.copy();
 				last.rotate(angle);
 				lines.push(last);
