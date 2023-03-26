@@ -1,11 +1,8 @@
 import { type FC } from 'react';
 import { SimpleGrid, Stack } from '@chakra-ui/react';
 
-import { lazily } from 'react-lazily';
-
 import { Canvas, FormClear, RotateLineForm, SetLineForm } from './ui';
-
-const { ModalChartsSteps } = lazily(async () => await import('./ui/modal-charts-steps'));
+import { ModalChartsSteps } from './ui/modal-charts-steps';
 
 export const Lab03: FC = () => {
 	return (
@@ -22,7 +19,7 @@ export const Lab03: FC = () => {
 					spacing={4}
 					direction='row'
 				>
-					<ModalStepsInfo />
+					<ModalChartsSteps />
 					<FormClear />
 				</Stack>
 			</Stack>
