@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 
-import { NumberInput } from 'shared/components';
+import { NumberInput, SubmitButton } from 'shared/components';
 import { onPromise, useFigureStore } from 'shared/lib';
 
 interface IMoveForm {
@@ -25,16 +25,11 @@ export const PivotForm: FC = () => {
 
 	return (
 		<form onSubmit={onPromise(handleSubmit(onAction))}>
-			<Stack spacing={2}>
+			<Stack spacing={4}>
 				<NumberInput {...{ register, errors, name: 'x', defaultValue: 150 }} />
 				<NumberInput {...{ register, errors, name: 'y', defaultValue: 150 }} />
 
-				<Button
-					variant='solid'
-					type='submit'
-				>
-					Поставить центр
-				</Button>
+				<SubmitButton>Поставить центр</SubmitButton>
 			</Stack>
 		</form>
 	);

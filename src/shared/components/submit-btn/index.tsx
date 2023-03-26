@@ -8,8 +8,9 @@ interface Properties {
 export const SubmitButton: FC<Properties> = ({ children }: Properties) => {
 	return (
 		<Button
-			variant='solid'
+			variant='outline'
 			type='submit'
+			colorScheme='purple'
 		>
 			{children}
 		</Button>

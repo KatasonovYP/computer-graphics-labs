@@ -12,6 +12,7 @@ export const Stroke: FC<Properties> = ({ children }: Properties) => {
 			borderColor={'black'}
 			borderRadius={'10px'}
 			maxHeight={500}
+			maxWidth={500}
 		>
 			{children}
 		</Box>

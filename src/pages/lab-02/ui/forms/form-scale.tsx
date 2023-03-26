@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { Button, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 
-import { NumberInput } from 'shared/components';
+import { NumberInput, SubmitButton } from 'shared/components';
 import { onPromise, useFigureStore } from 'shared/lib';
 
 interface IMoveForm {
@@ -29,12 +29,7 @@ export const ScaleForm: FC = () => {
 				<NumberInput {...{ register, errors, name: 'kx', defaultValue: 1.2 }} />
 				<NumberInput {...{ register, errors, name: 'ky', defaultValue: 1.2 }} />
 
-				<Button
-					variant='solid'
-					type='submit'
-				>
-					Масштабировать
-				</Button>
+				<SubmitButton>Масштабировать</SubmitButton>
 			</Stack>
 		</form>
 	);

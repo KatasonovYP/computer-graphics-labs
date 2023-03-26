@@ -5,5 +5,12 @@ import { useLinesStore } from '../store/lines-store';
 
 export const FormClear: FC = () => {
 	const clear = useLinesStore((state) => state.clear);
-	return <Button onClick={clear}>Очистить</Button>;
+	return (
+		<Button
+			colorScheme='red'
+			onClick={clear}
+		>
+			Очистить
+		</Button>
+	);
 };
