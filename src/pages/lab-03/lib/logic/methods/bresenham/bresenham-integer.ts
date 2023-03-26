@@ -1,4 +1,4 @@
-import { type IPoint } from '../../model';
+import { type IPoint } from '../../../../model';
 
 import { bresenhamInit } from './bresenham-init';
 

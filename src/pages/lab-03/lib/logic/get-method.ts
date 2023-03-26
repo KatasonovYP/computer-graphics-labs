@@ -1,10 +1,8 @@
 import { EMethod, type IMethodFunctionType } from '../../model';
 
-import { dda } from './dda';
-import { bresenhamInteger } from './bresenham-integer';
-import { bresenhamSmooth } from './bresenham-smooth';
-import { bresenhamFloat } from './bresenham-float';
-import { wu } from './wu';
+import { dda } from './methods/dda';
+import { bresenhamFloat, bresenhamInteger, bresenhamSmooth } from './methods/bresenham';
+import { wu } from './methods/wu';
 
 export function getMethod(name: EMethod): IMethodFunctionType {
 	switch (name) {

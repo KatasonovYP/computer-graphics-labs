@@ -1,4 +1,4 @@
-import { type IPoint, Point } from '../../model';
+import { type IPoint, Point } from '../../../model';
 
 export function wu(startPoint: IPoint, endPoint: IPoint): IPoint[] {
 	const pixels: IPoint[] = [];

@@ -1,31 +1,28 @@
-import { type IPoint } from '../../model';
+import { type IPoint } from '../../../../model';
 
 import { bresenhamInit } from './bresenham-init';
 
-export function bresenhamSmooth(startPoint: IPoint, endPoint: IPoint): IPoint[] {
+export function bresenhamFloat(startPoint: IPoint, endPoint: IPoint): IPoint[] {
 	const pixels: IPoint[] = [];
 
 	if (startPoint.eq(endPoint)) {
 		pixels.push(startPoint);
 	} else {
 		const { step, absDiff, isSwapped } = bresenhamInit(startPoint, endPoint);
-		const intensity = 100;
-		const tg = (absDiff.y / absDiff.x) * intensity;
-		let error = intensity / 2;
-		const threshold = intensity - tg;
+		const tg = absDiff.y / absDiff.x;
+		let error = tg - 0.5;
 		const current = startPoint.copy();
 
 		while (!current.eq(endPoint)) {
-			current.intensity = Math.round(error);
 			pixels.push(current.copy());
 
-			if (error < threshold) {
+			if (error >= 0) {
+				isSwapped ? (current.x += step.x) : (current.y += step.y);
+				error -= 1;
+			}
+			if (error <= 0) {
 				isSwapped ? (current.y += step.y) : (current.x += step.x);
 				error += tg;
-			} else {
-				current.x += step.x;
-				current.y += step.y;
-				error -= threshold;
 			}
 		}
 	}
