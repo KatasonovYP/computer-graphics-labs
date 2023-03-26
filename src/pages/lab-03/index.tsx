@@ -1,8 +1,7 @@
 import { type FC } from 'react';
 import { SimpleGrid, Stack } from '@chakra-ui/react';
 
-import { Canvas, FormClear, RotateLineForm, SetLineForm } from './ui';
-import { ModalChartsSteps } from './ui/modal-charts-steps';
+import { Canvas, FormClear, ModalChartsSteps, ModalChartTime, RotateLineForm, SetLineForm } from './ui';
 
 export const Lab03: FC = () => {
 	return (
@@ -20,6 +19,7 @@ export const Lab03: FC = () => {
 					direction='row'
 				>
 					<ModalChartsSteps />
+					<ModalChartTime />
 					<FormClear />
 				</Stack>
 			</Stack>
