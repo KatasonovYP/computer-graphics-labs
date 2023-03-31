@@ -16,7 +16,7 @@ export function getAllMethodsTime(): ITimeFrame[] {
 }
 
 function getTimeData(method: EMethod): number {
-	const LAUNCHES_COUNT = 1000;
+	const LAUNCHES_COUNT = 10_000;
 	let sum = 0;
 
 	const startPoint = Point.new(0, 0);

@@ -40,6 +40,14 @@ export const ModalChartsSteps: FC = () => {
 							spacing={4}
 						>
 							{Object.values(EMethod).map((method, key) => {
+								if (method === EMethod.WU) {
+									return (
+										<ChartSteps
+											key={key}
+											method={EMethod.BRESENHAM_SMOOTH}
+										/>
+									);
+								}
 								return (
 									<ChartSteps
 										key={key}
