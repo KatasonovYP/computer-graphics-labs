@@ -1,8 +1,7 @@
 import { type FC } from 'react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Button, Menu, MenuButton, MenuList } from '@chakra-ui/react';
-
-import { LabMenuItem } from '../lab-menu-item';
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 
 function getMenuItemName(target: number): string {
 	return 'lab-' + ('0' + String(target)).slice(-2);
@@ -11,11 +10,15 @@ function getMenuItemName(target: number): string {
 function getMenuItems(): JSX.Element[] {
 	const result = [];
 	for (let index = 1; index <= 4; ++index) {
+		const name = getMenuItemName(index);
 		result.push(
-			<LabMenuItem
-				name={getMenuItemName(index)}
+			<MenuItem
+				as={Link}
+				to={`./${name}`}
 				key={index}
-			/>,
+			>
+				{name}
+			</MenuItem>,
 		);
 	}
 	return result;
