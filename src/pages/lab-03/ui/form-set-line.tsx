@@ -3,7 +3,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form';
 import { SimpleGrid, Stack, Text } from '@chakra-ui/react';
 
 import { ColorPicker, InputRadio, NumberInput, SubmitButton } from 'shared/components';
-import { colorConverter, onPromise } from 'shared/lib';
+import { chakraColorToHex, onPromise } from 'shared/lib';
 
 import { useLinesStore } from '../store/lines-store';
 import { EMethod, type IPoint, Line, Point } from '../model';
@@ -32,7 +32,7 @@ export const SetLineForm: FC = () => {
 		const a: IPoint = Point.new(+data.x1, +data.y1);
 		const b: IPoint = Point.new(+data.x2, +data.y2);
 
-		const hex = colorConverter(data.color);
+		const hex = chakraColorToHex(data.color);
 
 		const line = Line.new(a, b, hex, data.method);
 		setTarget(line);
@@ -64,7 +64,7 @@ export const SetLineForm: FC = () => {
 					align='center'
 				>
 					<Text textAlign='center'>Выбор цвета</Text>
-					<ColorPicker {...{ setValue, register, name: 'color' }} />
+					<ColorPicker {...{ setValue, register, errors, name: 'color' }} />
 				</Stack>
 				<SubmitButton>Отрисовать</SubmitButton>
 			</SimpleGrid>
