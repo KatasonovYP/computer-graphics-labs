@@ -3,14 +3,16 @@ import { Button } from '@chakra-ui/react';
 
 interface Properties {
 	children: ReactNode;
+	props?: Record<string, unknown>;
 }
 
-export const SubmitButton: FC<Properties> = ({ children }: Properties) => {
+export const SubmitButton: FC<Properties> = ({ children, props }: Properties) => {
 	return (
 		<Button
 			variant='outline'
 			type='submit'
 			colorScheme='purple'
+			{...props}
 		>
 			{children}
 		</Button>
