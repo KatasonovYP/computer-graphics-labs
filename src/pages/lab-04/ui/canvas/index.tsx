@@ -1,24 +1,24 @@
 import { HEIGHT, WIDTH } from 'shared/config';
 
-import { useCanvasStore } from '../../store';
+import { useFiguresStore } from '../../store';
 
-import { useCanvas } from './use-canvas';
+import { useCanvas } from './hooks/use-canvas';
 
 import { Stroke } from './stroke';
 
 import type { FC } from 'react';
 
 export const PerformantCanvas: FC = () => {
-	const moveCanvas = useCanvasStore((state) => state.moveCanvas);
-	const canvasReference = useCanvas();
+	const pixels = useFiguresStore((state) => state.pixels);
+	const [canvasReference, moveCanvas] = useCanvas(pixels);
 
 	return (
 		<Stroke>
 			<canvas
 				ref={canvasReference}
 				onMouseMove={moveCanvas}
-				height={WIDTH}
-				width={HEIGHT}
+				height={HEIGHT}
+				width={WIDTH}
 			/>
 		</Stroke>
 	);

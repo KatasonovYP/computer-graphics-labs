@@ -7,7 +7,7 @@ import { chakraColorToRGBA, DEFAULT_RGBA_COLOR, onPromise } from 'shared/lib';
 
 import { EMethod } from '../model';
 import { getMethod, getReflectedPixels } from '../lib';
-import { useCanvasStore } from '../store';
+import { useFiguresStore } from '../store';
 
 interface IFormCircleSpectrum {
 	x: number;
@@ -27,7 +27,7 @@ export const FormCircleSpectrum: FC = () => {
 		setValue,
 	} = useForm<IFormCircleSpectrum>();
 
-	const pushFigure = useCanvasStore((state) => state.pushFigure);
+	const pushFigure = useFiguresStore((state) => state.pushFigure);
 	const onAction: SubmitHandler<IFormCircleSpectrum> = (data): void => {
 		let radius = +data.radius;
 		const center = { x: +data.x, y: +data.y };

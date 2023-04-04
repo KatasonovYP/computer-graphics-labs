@@ -1,1 +1,1 @@
-export { useCanvasStore } from './canvas-store';
+export { useFiguresStore } from './figures-store';
