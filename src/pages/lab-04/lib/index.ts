@@ -1,2 +1,2 @@
-export { getSymmetricPixels } from './get-symmetrical-pixels';
+export { getReflectedPixels } from './get-reflected-pixels';
 export { getMethod } from './get-method';
