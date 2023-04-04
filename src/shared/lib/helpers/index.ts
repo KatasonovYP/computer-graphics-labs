@@ -1,2 +1,2 @@
-export { hexToRGBA, chakraColorToHex, chakraColorToRGBA } from './color-converters';
+export { hexToRGBA, chakraColorToHex, chakraColorToRGBA, DEFAULT_RGBA_COLOR } from './color-converters';
 export { onPromise } from './on-promise';

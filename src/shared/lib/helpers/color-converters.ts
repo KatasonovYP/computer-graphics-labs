@@ -2,6 +2,13 @@ import { theme as chakraTheme } from '@chakra-ui/react';
 
 import type { ColorShade, ColorToken, Irgba } from 'shared/model';
 
+export const DEFAULT_RGBA_COLOR: Irgba = {
+	r: 70,
+	g: 70,
+	b: 70,
+	a: 70,
+};
+
 export function chakraColorToHex(color: string): string {
 	const [colorToken, colorShade] = color.split('.');
 	const ColorShadeChecked: ColorShade = (Number.parseInt(colorShade) as ColorShade) || 500;
