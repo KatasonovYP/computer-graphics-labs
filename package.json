@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
+    "lint-current:fix": "eslint --fix",
     "prettier": "prettier --check src",
     "prettier:fix": "prettier src -w"
   },
