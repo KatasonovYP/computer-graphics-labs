@@ -81,7 +81,7 @@
     "no-eq-null": 2,
 
     // function
-    "max-params": [1, 2],
+    "max-params": [1, 3],
     "max-lines-per-function": [1, 48],
     "arrow-parens": [2, "always"],
 
@@ -105,6 +105,8 @@
     }],
     "unicorn/no-null": 0,
     "unicorn/no-useless-undefined": 0,
+    "unicorn/prevent-abbreviations": 1,
+    "unicorn/consistent-function-scoping": 1,
 //    "unicorn/no-negated-condition": 0,
 
     // typescript
