@@ -22,6 +22,7 @@
     "compose-function": "^3.0.3",
     "eslint-config-standard-with-typescript": "^34.0.1",
     "framer-motion": "^10.2.4",
+    "immer": "^9.0.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.5",
