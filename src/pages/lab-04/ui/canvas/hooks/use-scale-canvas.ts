@@ -1,4 +1,4 @@
-import { useState, WheelEvent } from 'react';
+import { useState, type WheelEvent } from 'react';
 
 export type moveCanvasHandlerType = (event: WheelEvent<HTMLCanvasElement>) => void;
 

@@ -1,4 +1,4 @@
-import { type RefObject, useEffect, useRef, WheelEvent } from 'react';
+import { type RefObject, useEffect, useRef, type WheelEvent } from 'react';
 
 import { drawPixels } from '../draw-pixels';
 import { drawGridTools } from '../draw-grid-tools';
