@@ -1,5 +1,5 @@
 export enum EMethod {
 	Canonical = 'canonical',
-	PARAMETER = 'parameter',
+	Parametric = 'parametric',
 	Bresenham = 'bresenham',
 }

@@ -13,7 +13,7 @@ export function getMethod(name: EMethod): IMethodFunctionType {
 		case EMethod.Canonical: {
 			return canonicalCircle;
 		}
-		case EMethod.PARAMETER: {
+		case EMethod.Parametric: {
 			return parametricCircle;
 		}
 		case EMethod.Bresenham: {
