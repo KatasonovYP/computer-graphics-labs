@@ -6,7 +6,7 @@ import { ColorPicker, InputRadio, NumberInput, SubmitButton } from 'shared/compo
 import { chakraColorToRGBA, DEFAULT_RGBA_COLOR, onPromise } from 'shared/lib';
 
 import { EMethod } from '../model';
-import { getMethod, getReflectedCirclePixels } from '../lib';
+import { getMethodCircle, getReflectedCirclePixels } from '../lib';
 import { useFiguresStore } from '../store';
 
 interface IFormCircleSpectrum {
@@ -34,7 +34,7 @@ export const FormCircleSpectrum: FC = () => {
 
 		for (let index = 0; index < +data.count; ++index) {
 			const rgba = chakraColorToRGBA(data.color) ?? DEFAULT_RGBA_COLOR;
-			const drawFunction = getMethod(data.method);
+			const drawFunction = getMethodCircle(data.method);
 			const pixels = drawFunction(center, radius, rgba);
 			const circle = getReflectedCirclePixels(pixels, center);
 
