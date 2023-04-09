@@ -4,6 +4,7 @@ import { EMethod, type IPosition, type Pixel } from '../model';
 
 import { canonicalCircle } from './canonical-circle';
 import { parametricCircle } from './parametric-circle';
+import { bresenhamCircle } from './bresenham-circle';
 
 export type IMethodFunctionType = (center: IPosition, radius: number, color: Irgba) => Pixel[];
 
@@ -14,6 +15,9 @@ export function getMethod(name: EMethod): IMethodFunctionType {
 		}
 		case EMethod.PARAMETER: {
 			return parametricCircle;
+		}
+		case EMethod.Bresenham: {
+			return bresenhamCircle;
 		}
 		default: {
 			return canonicalCircle;
