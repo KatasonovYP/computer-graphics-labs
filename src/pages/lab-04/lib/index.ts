@@ -1,2 +1,3 @@
 export { getReflectedCirclePixels, getReflectedEllipsePixels } from './get-reflected-pixels';
-export { getMethod } from './get-method';
+export { getMethodCircle } from './circle/get-method-circle';
+export { getMethodEllipse } from './ellipse/get-method-ellipse';
