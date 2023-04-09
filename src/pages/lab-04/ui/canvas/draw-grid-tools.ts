@@ -81,14 +81,22 @@ function drawTextVertical(context: CanvasRenderingContext2D, centerPosition: IPo
 	}
 }
 
-export function drawGrid(context: CanvasRenderingContext2D, centerPosition: IPosition): void {
+function drawGrid(context: CanvasRenderingContext2D, centerPosition: IPosition): void {
 	context.lineWidth = 0.5;
 	context.strokeStyle = '#999';
 	drawGridHorizontal(context, centerPosition);
 	drawGridVertical(context, centerPosition);
-	drawAxis(context, centerPosition);
+}
+
+function drawText(context: CanvasRenderingContext2D, centerPosition: IPosition): void {
 	context.lineWidth = 1;
 	context.strokeStyle = '#000';
 	drawTextHorizontal(context, centerPosition);
 	drawTextVertical(context, centerPosition);
+}
+
+export function drawGridTools(context: CanvasRenderingContext2D, centerPosition: IPosition): void {
+	drawGrid(context, centerPosition);
+	drawAxis(context, centerPosition);
+	drawText(context, centerPosition);
 }

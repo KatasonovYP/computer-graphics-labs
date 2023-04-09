@@ -10,12 +10,13 @@ import type { FC } from 'react';
 
 export const PerformantCanvas: FC = () => {
 	const pixels = useFiguresStore((state) => state.pixels);
-	const [canvasReference, moveCanvas] = useCanvas(pixels);
+	const { canvasReference, moveCanvas, scaleCanvas } = useCanvas(pixels);
 
 	return (
 		<Stroke>
 			<canvas
 				ref={canvasReference}
+				onWheel={scaleCanvas}
 				onMouseMove={moveCanvas}
 				height={HEIGHT}
 				width={WIDTH}
