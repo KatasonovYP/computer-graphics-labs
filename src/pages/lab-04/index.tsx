@@ -4,6 +4,7 @@ import { SimpleGrid, Stack } from '@chakra-ui/react';
 import { PerformantCanvas } from './ui/canvas';
 import { FormCircle } from './ui/form-circle';
 import { FormCircleSpectrum } from './ui/form-circle-spectrum';
+import { CleanButton } from './ui/clean-button';
 
 export const Lab04: FC = () => {
 	return (
@@ -16,6 +17,7 @@ export const Lab04: FC = () => {
 			<Stack spacing={4}>
 				<FormCircle />
 				<FormCircleSpectrum />
+				<CleanButton />
 			</Stack>
 			<PerformantCanvas />
 		</SimpleGrid>

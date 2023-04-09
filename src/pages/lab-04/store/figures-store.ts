@@ -10,6 +10,7 @@ interface IFiguresStore {
 	setPixels: (pixels: Pixel[]) => void;
 
 	pushFigure: (figure: Pixel[]) => void;
+	cleanFigures: () => void;
 	setFigures: (figures: Pixel[][]) => void;
 }
 
@@ -26,6 +27,11 @@ export const useFiguresStore = create<IFiguresStore>(
 		pushFigure(figure: Pixel[]) {
 			get().setFigures([...get().figures, figure]);
 			get().setPixels([...get().pixels, ...figure]);
+		},
+
+		cleanFigures() {
+			get().setFigures([]);
+			get().setPixels([]);
 		},
 
 		setFigures(figures: Pixel[][]) {
