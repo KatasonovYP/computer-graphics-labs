@@ -3,7 +3,7 @@ import { Button, SimpleGrid } from '@chakra-ui/react';
 import { type FieldValues, type Path } from 'react-hook-form';
 
 const colors = [
-	'gray.500',
+	'gray.100',
 	'red.500',
 	'gray.700',
 	'green.500',

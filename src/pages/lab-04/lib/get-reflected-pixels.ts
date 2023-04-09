@@ -2,9 +2,17 @@ import { type IPosition, Pixel } from '../model';
 
 type reflectFunction = (x: number, y: number, center: IPosition) => IPosition;
 
-export function getReflectedPixels(targetPixels: Pixel[], center: IPosition): Pixel[] {
+export function getReflectedCirclePixels(targetPixels: Pixel[], center: IPosition): Pixel[] {
 	let resultPixels: Pixel[] = [...targetPixels];
 	for (const reflect of [reflectVertically, reflectHorizontally, reflectDiagonally]) {
+		resultPixels = reflectForAllPixels(reflect, resultPixels, center);
+	}
+	return resultPixels;
+}
+
+export function getReflectedEllipsePixels(targetPixels: Pixel[], center: IPosition): Pixel[] {
+	let resultPixels: Pixel[] = [...targetPixels];
+	for (const reflect of [reflectVertically, reflectHorizontally]) {
 		resultPixels = reflectForAllPixels(reflect, resultPixels, center);
 	}
 	return resultPixels;

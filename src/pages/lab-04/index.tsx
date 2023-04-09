@@ -5,6 +5,7 @@ import { PerformantCanvas } from './ui/canvas';
 import { FormCircle } from './ui/form-circle';
 import { FormCircleSpectrum } from './ui/form-circle-spectrum';
 import { CleanButton } from './ui/clean-button';
+import { FormEllipse } from './ui/form-ellipse';
 
 export const Lab04: FC = () => {
 	return (
@@ -17,6 +18,7 @@ export const Lab04: FC = () => {
 			<Stack spacing={4}>
 				<FormCircle />
 				<FormCircleSpectrum />
+				<FormEllipse />
 				<CleanButton />
 			</Stack>
 			<PerformantCanvas />
