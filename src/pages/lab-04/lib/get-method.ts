@@ -1,5 +1,7 @@
 import { type Irgba } from 'shared/model';
 
+import { isNever } from 'shared/lib';
+
 import { EMethod, type IPosition, type Pixel } from '../model';
 
 import { canonicalCircle } from './canonical-circle';
@@ -20,7 +22,7 @@ export function getMethod(name: EMethod): IMethodFunctionType {
 			return bresenhamCircle;
 		}
 		default: {
-			return canonicalCircle;
+			return isNever(name);
 		}
 	}
 }
