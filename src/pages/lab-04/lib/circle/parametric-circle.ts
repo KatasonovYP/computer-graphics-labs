@@ -1,6 +1,6 @@
 import { type Irgba } from 'shared/model';
 
-import { type IPosition, Pixel } from '../model';
+import { type IPosition, Pixel } from '../../model';
 
 export function parametricCircle(center: IPosition, radius: number, color: Irgba): Pixel[] {
 	const step = 1 / radius;

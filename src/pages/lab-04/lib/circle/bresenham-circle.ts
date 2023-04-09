@@ -1,6 +1,6 @@
 import { type Irgba } from 'shared/model';
 
-import { type IPosition, Pixel } from '../model';
+import { type IPosition, Pixel } from '../../model';
 
 export function bresenhamCircle(center: IPosition, radius: number, color: Irgba): Pixel[] {
 	const pixels: Pixel[] = [];
@@ -10,7 +10,9 @@ export function bresenhamCircle(center: IPosition, radius: number, color: Irgba)
 	let delta = 2 * (1 - radius);
 	let d: number;
 
-	while (y > x) {
+	while (y >= x) {
+		pixels.push(new Pixel(x + center.x, y + center.y, color));
+
 		d = 2 * (delta + y) - 1;
 		x += 1;
 
@@ -20,7 +22,6 @@ export function bresenhamCircle(center: IPosition, radius: number, color: Irgba)
 		} else {
 			delta += x + x + 1;
 		}
-		pixels.push(new Pixel(x + center.x, y + center.y, color));
 	}
 	return pixels;
 }

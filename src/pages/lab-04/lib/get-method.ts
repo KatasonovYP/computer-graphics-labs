@@ -4,10 +4,10 @@ import { isNever } from 'shared/lib';
 
 import { EMethod, type IPosition, type Pixel } from '../model';
 
-import { canonicalCircle } from './canonical-circle';
-import { parametricCircle } from './parametric-circle';
-import { bresenhamCircle } from './bresenham-circle';
-import { midpointCircle } from './midpoint-circle';
+import { canonicalCircle } from './circle/canonical-circle';
+import { parametricCircle } from './circle/parametric-circle';
+import { bresenhamCircle } from './circle/bresenham-circle';
+import { midpointCircle } from './circle/midpoint-circle';
 
 export type IMethodFunctionType = (center: IPosition, radius: number, color: Irgba) => Pixel[];
 
