@@ -8,7 +8,9 @@ export function useScaleCanvas(): [number, moveCanvasHandlerType] {
 	function scaleCanvas(event: WheelEvent<HTMLCanvasElement>): void {
 		const scaleBy = 1.02;
 		const newScale = event.deltaY < 0 ? scale * scaleBy : scale / scaleBy;
-		setScale(newScale);
+		if (newScale >= 1) {
+			setScale(newScale);
+		}
 	}
 
 	return [scale, scaleCanvas];

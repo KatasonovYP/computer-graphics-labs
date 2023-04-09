@@ -20,8 +20,8 @@ export function useCanvas(pixels: Pixel[]): {
 	scaleCanvas: scaleCanvasHandlerType;
 } {
 	const canvasReference = useRef<HTMLCanvasElement>(null);
-	const [centerPosition, moveCanvas] = useMoveCanvas();
 	const [scale, scaleCanvas] = useScaleCanvas();
+	const [centerPosition, moveCanvas] = useMoveCanvas(scale);
 
 	useEffect(() => {
 		const canvas = canvasReference.current;
@@ -32,15 +32,15 @@ export function useCanvas(pixels: Pixel[]): {
 			drawPixels(context, pixels, centerPosition);
 			drawGridTools(context, centerPosition);
 
-			// const imageData = context.getImageData(0, 0, context.canvas.width / scale, context.canvas.height / scale);
-			// context.putImageData(imageData, 0, 0);
-			//
-			// context.scale(scale, scale);
-			//
-			// context.imageSmoothingEnabled = false;
-			// context.drawImage(context.canvas, 0, 0);
-			//
-			// context.scale(1 / scale, 1 / scale);
+			const imageData = context.getImageData(0, 0, context.canvas.width / scale, context.canvas.height / scale);
+			context.putImageData(imageData, 0, 0);
+
+			context.scale(scale, scale);
+
+			context.imageSmoothingEnabled = false;
+			context.drawImage(context.canvas, 0, 0);
+
+			context.scale(1 / scale, 1 / scale);
 		}
 	}, [centerPosition, scale, pixels]);
 	return { canvasReference, moveCanvas, scaleCanvas };

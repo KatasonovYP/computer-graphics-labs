@@ -3,12 +3,12 @@ import { type MouseEvent, useState } from 'react';
 import { type IPosition } from '../../../model';
 
 export type moveCanvasHandlerType = (event: MouseEvent<HTMLCanvasElement>) => void;
-export function useMoveCanvas(): [IPosition, moveCanvasHandlerType] {
+export function useMoveCanvas(scale: number): [IPosition, moveCanvasHandlerType] {
 	const [centerPosition, setCenterPosition] = useState<IPosition>({ x: 0, y: 0 });
 
 	function moveCanvas(event: MouseEvent<HTMLCanvasElement>): void {
 		if (event.buttons > 0) {
-			displace(event.movementX, event.movementY);
+			displace(event.movementX / scale, event.movementY / scale);
 		}
 	}
 
