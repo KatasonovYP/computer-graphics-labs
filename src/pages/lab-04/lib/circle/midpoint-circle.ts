@@ -7,7 +7,7 @@ export function midpointCircle(center: IPosition, radius: number, color: Irgba):
 	let x = radius;
 	let y = 0;
 
-	let delta = 1 - radius; // 5/4 - radius
+	let delta = 1 - radius;
 
 	while (x >= y) {
 		pixels.push(new Pixel(x + center.x, y + center.y, color));

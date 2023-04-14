@@ -48,11 +48,11 @@ export const FormCircle: FC = () => {
 					<NumberInput {...{ register, errors, name: 'y', defaultValue: 15 }} />
 					<NumberInput {...{ register, errors, name: 'radius', defaultValue: 75 }} />
 				</Stack>
-				<Stack spacing={6}>
+				<Stack spacing={4}>
 					<InputRadio {...{ register, errors, name: 'method', choices: EMethod }} />
 					<ColorPicker {...{ setValue, register, errors, name: 'color' }} />
 				</Stack>
-				<SubmitButton>Отрисовать</SubmitButton>
+				<SubmitButton>Draw</SubmitButton>
 			</SimpleGrid>
 		</form>
 	);

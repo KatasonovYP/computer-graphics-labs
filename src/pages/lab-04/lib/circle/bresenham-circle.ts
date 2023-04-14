@@ -14,13 +14,13 @@ export function bresenhamCircle(center: IPosition, radius: number, color: Irgba)
 		pixels.push(new Pixel(x + center.x, y + center.y, color));
 
 		d = 2 * (delta + y) - 1;
-		x += 1;
+		++x;
 
 		if (d >= 0) {
-			y -= 1;
+			--y;
 			delta += 2 * (x - y + 1);
 		} else {
-			delta += x + x + 1;
+			delta += 2 * x + 1;
 		}
 	}
 	return pixels;

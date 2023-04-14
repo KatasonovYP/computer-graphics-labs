@@ -10,7 +10,7 @@ export const CleanButton: FC = () => {
 			onClick={cleanFigures}
 			colorScheme={'red'}
 		>
-			Очистить
+			Clear
 		</Button>
 	);
 };

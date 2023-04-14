@@ -5,37 +5,47 @@ import { SimpleGrid, Stack } from '@chakra-ui/react';
 import { ColorPicker, InputRadio, NumberInput, SubmitButton } from 'shared/components';
 import { chakraColorToRGBA, DEFAULT_RGBA_COLOR, onPromise } from 'shared/lib';
 
-import { EMethod, type IPosition } from '../model';
+import { EMethod, IPosition } from '../model';
 import { getMethodEllipse, getReflectedEllipsePixels } from '../lib';
 import { useFiguresStore } from '../store';
 
-interface IFormEllipse {
+interface IFormEllipseSpectrum {
 	x: number;
 	y: number;
 	radiusX: number;
 	radiusY: number;
+	step: number;
+	count: number;
 	method: EMethod;
 	color: string;
 }
 
-export const FormEllipse: FC = () => {
+export const FormEllipseSpectrum: FC = () => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		setValue,
-	} = useForm<IFormEllipse>();
+	} = useForm<IFormEllipseSpectrum>();
 
 	const pushFigure = useFiguresStore((state) => state.pushFigure);
-	const onAction: SubmitHandler<IFormEllipse> = (data): void => {
-		const rgba = chakraColorToRGBA(data.color) ?? DEFAULT_RGBA_COLOR;
+	const onAction: SubmitHandler<IFormEllipseSpectrum> = (data): void => {
+		const center = { x: +data.x, y: +data.y };
 		const radius: IPosition = { x: +data.radiusX, y: +data.radiusY };
-		const center: IPosition = { x: +data.x, y: +data.y };
-		const method = getMethodEllipse(data.method);
-		const pixels = method(center, radius, rgba);
-		const circle = getReflectedEllipsePixels(pixels, center);
+		const rgba = chakraColorToRGBA(data.color) ?? DEFAULT_RGBA_COLOR;
 
-		pushFigure(circle);
+		for (let index = 0; index < +data.count; ++index) {
+			const drawFunction = getMethodEllipse(data.method);
+			const pixels = drawFunction(center, radius, rgba);
+			const circle = getReflectedEllipsePixels(pixels, center);
+
+			pushFigure(circle);
+
+			const constant = radius.x / radius.y;
+			radius.x += +data.step;
+			radius.y = Math.round(radius.x / constant);
+			// radius.y += +data.step;
+		}
 	};
 
 	return (
@@ -50,7 +60,9 @@ export const FormEllipse: FC = () => {
 					<NumberInput {...{ register, errors, name: 'x', defaultValue: 10 }} />
 					<NumberInput {...{ register, errors, name: 'y', defaultValue: 15 }} />
 					<NumberInput {...{ register, errors, name: 'radiusX', defaultValue: 75 }} />
-					<NumberInput {...{ register, errors, name: 'radiusY', defaultValue: 75 }} />
+					<NumberInput {...{ register, errors, name: 'radiusY', defaultValue: 150 }} />
+					<NumberInput {...{ register, errors, name: 'count', defaultValue: 5 }} />
+					<NumberInput {...{ register, errors, name: 'step', defaultValue: 10 }} />
 				</Stack>
 				<Stack spacing={6}>
 					<InputRadio {...{ register, errors, name: 'method', choices: EMethod }} />

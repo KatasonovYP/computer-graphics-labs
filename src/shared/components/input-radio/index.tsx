@@ -22,7 +22,7 @@ export const InputRadio: FC<Properties<any>> = <T extends FieldValues>({
 	return (
 		<>
 			<RadioGroup defaultValue={defaultValue}>
-				<Stack spacing={4}>
+				<Stack spacing={2}>
 					{Object.values(choices).map((choice: string, key) => (
 						<Radio
 							key={key}

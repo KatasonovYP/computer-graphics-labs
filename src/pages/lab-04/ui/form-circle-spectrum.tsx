@@ -63,7 +63,7 @@ export const FormCircleSpectrum: FC = () => {
 					<InputRadio {...{ register, errors, name: 'method', choices: EMethod }} />
 					<ColorPicker {...{ setValue, register, errors, name: 'color' }} />
 				</Stack>
-				<SubmitButton>Отрисовать</SubmitButton>
+				<SubmitButton>Draw</SubmitButton>
 			</SimpleGrid>
 		</form>
 	);

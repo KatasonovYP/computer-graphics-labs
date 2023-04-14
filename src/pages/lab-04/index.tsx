@@ -6,6 +6,9 @@ import { FormCircle } from './ui/form-circle';
 import { FormCircleSpectrum } from './ui/form-circle-spectrum';
 import { CleanButton } from './ui/clean-button';
 import { FormEllipse } from './ui/form-ellipse';
+import { MyDrawer } from './ui/my-drawer';
+import { FormEllipseSpectrum } from './ui/form-ellipse-spectrum';
+import { ModalChartTime } from './ui/modal-charts-time';
 
 export const Lab04: FC = () => {
 	return (
@@ -16,9 +19,20 @@ export const Lab04: FC = () => {
 			spacing={4}
 		>
 			<Stack spacing={4}>
-				<FormCircle />
-				<FormCircleSpectrum />
-				<FormEllipse />
+				<MyDrawer name={'form circle'}>
+					<FormCircle />
+				</MyDrawer>
+				<MyDrawer name={'form circle spectrum'}>
+					<FormCircleSpectrum />
+				</MyDrawer>
+				<MyDrawer name={'form ellipse'}>
+					<FormEllipse />
+				</MyDrawer>
+				<MyDrawer name={'form ellipse spectrum'}>
+					<FormEllipseSpectrum />
+				</MyDrawer>
+				<ModalChartTime name={'circle'} />
+				<ModalChartTime name={'ellipse'} />
 				<CleanButton />
 			</Stack>
 			<PerformantCanvas />

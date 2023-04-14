@@ -1,5 +1,6 @@
-import { type IPosition, Pixel } from '../../model';
 import { type Irgba } from 'shared/model';
+
+import { type IPosition, Pixel } from '../../model';
 
 export function parametricEllipse(center: IPosition, radius: IPosition, color: Irgba): Pixel[] {
 	const pixels: Pixel[] = [];

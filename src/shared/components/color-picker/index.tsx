@@ -34,12 +34,12 @@ export const ColorPicker: FC<Properties<any>> = <T extends FieldValues>({
 				spacing={2}
 				direction={'row'}
 			>
-				<Text>Выберете цвет: </Text>
+				<Text>Choose color: </Text>
 				<ColorPopover {...{ name, register, errors, setValue, defaultValue }} />
 			</Stack>
 
-			{errors[name]?.type === 'required' && <TextAlert>Поле {name} необходимо</TextAlert>}
-			{errors[name]?.type === 'pattern' && <TextAlert>Выберете корректный цвет</TextAlert>}
+			{errors[name]?.type === 'required' && <TextAlert>Field {name} is required</TextAlert>}
+			{errors[name]?.type === 'pattern' && <TextAlert>Choose correct color</TextAlert>}
 		</>
 	);
 };

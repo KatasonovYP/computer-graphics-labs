@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import { type FieldErrors, type FieldValues, type Path, type UseFormRegister } from 'react-hook-form';
-import { Input } from '@chakra-ui/react';
+import { Input, Stack, Text } from '@chakra-ui/react';
 
 import { numberRegExp } from 'shared/config';
 
@@ -25,15 +25,18 @@ export const NumberInput: customFC = <T extends FieldValues>({
 	console.log();
 	return (
 		<>
-			<Input
-				id='standard-basic'
-				placeholder={`Введите ${name}`}
-				errorBorderColor='red.300'
-				isInvalid={errors[name] !== undefined}
-				variant='flushed'
-				defaultValue={defaultValue}
-				{...register(name, { required: true, pattern: numberRegExp })}
-			/>
+			<Stack direction={'row'}>
+				<Text minW={70}>{name}:</Text>
+				<Input
+					id='standard-basic'
+					placeholder={`Введите ${name}`}
+					errorBorderColor='red.300'
+					isInvalid={errors[name] !== undefined}
+					variant='flushed'
+					defaultValue={defaultValue}
+					{...register(name, { required: true, pattern: numberRegExp })}
+				/>
+			</Stack>
 			{errors[name]?.type === 'required' && <TextAlert>Поле {name} необходимо</TextAlert>}
 			{errors[name]?.type === 'pattern' && <TextAlert>Введите корректное число</TextAlert>}
 		</>
