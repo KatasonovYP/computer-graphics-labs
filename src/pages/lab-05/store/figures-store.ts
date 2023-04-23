@@ -1,52 +1,75 @@
 import { create } from 'zustand';
+import { immer } from 'zustand/middleware/immer';
 
 import { type IPoint, type Pixel } from 'shared/model';
 
 import { drawLine } from '../lib/draw-line';
+import produce from 'immer';
 
 type Figure = IPoint[];
 
-interface IFiguresStore {
+interface State {
 	figures: Figure[];
 	pixels: Pixel[];
 	points: IPoint[];
-	addPoint: (point: IPoint) => void;
-	closeFigure: () => void;
-	clear: () => void;
 }
 
-export const useFiguresStore = create<IFiguresStore>((set, get): IFiguresStore => {
-	return {
-		points: [],
-		pixels: [],
-		figures: [],
+interface Actions {
+	addPoint: (point: IPoint) => void;
+	closeFigure: () => void;
+	fillFigures: () => void;
+	clear: () => void;
+	pushPixels: (pixels: Pixel[]) => void;
+}
 
-		addPoint(point: IPoint): void {
-			const lastPoint = get().points[get().points.length - 1] || point;
-			const linePixels = drawLine(lastPoint, point);
-			set((state) => ({
-				points: [...state.points, point],
-				pixels: [...state.pixels, ...linePixels],
-			}));
-		},
+type IStore = State & Actions;
 
-		closeFigure(): void {
-			const firstPoint = get().points[0];
-			const lastPoint = get().points[get().points.length - 1];
-			const linePixels = firstPoint || lastPoint ? drawLine(firstPoint, lastPoint) : [];
-			set((state): IFiguresStore => {
-				const newFigure = [...state.points, state.points[0]];
-				return {
-					...state,
-					figures: [...state.figures, newFigure],
-					pixels: [...state.pixels, ...linePixels],
-				};
-			});
-			set((state) => ({ points: [] }));
-		},
+export const useFiguresStore = create(
+	immer<IStore>((set, get): IStore => {
+		return {
+			points: [],
+			pixels: [],
+			figures: [],
 
-		clear(): void {
-			set({ points: [], figures: [], pixels: [] });
-		},
-	};
-});
+			addPoint(point: IPoint): void {
+				const lastPoint = get().points[get().points.length - 1] || point;
+				const linePixels = drawLine(lastPoint, point);
+				set(
+					produce((state) => {
+						state.points.push(point);
+						state.pixels.push(...linePixels);
+					}),
+				);
+			},
+
+			closeFigure(): void {
+				set((state): IStore => {
+					const firstPoint = get().points[0];
+					const lastPoint = get().points[get().points.length - 1];
+					const linePixels = firstPoint || lastPoint ? drawLine(firstPoint, lastPoint) : [];
+					const newFigure = [...state.points, state.points[0]];
+					return {
+						...state,
+						figures: [...state.figures, newFigure],
+						pixels: [...state.pixels, ...linePixels],
+						points: [],
+					};
+				});
+			},
+
+			fillFigures(): void {},
+
+			pushPixels(pixels: Pixel[]): void {
+				set(
+					produce((state) => {
+						state.pixels.push(...pixels);
+					}),
+				);
+			},
+
+			clear(): void {
+				set({ points: [], figures: [], pixels: [] });
+			},
+		};
+	}),
+);

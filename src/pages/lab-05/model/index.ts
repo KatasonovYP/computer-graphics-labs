@@ -1,1 +1,1 @@
-export { EMethod } from './method';
+export { EFillFigureMethod } from './method';
