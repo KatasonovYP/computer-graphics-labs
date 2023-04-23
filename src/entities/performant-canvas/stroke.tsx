@@ -8,13 +8,19 @@ interface Properties {
 export const Stroke: FC<Properties> = ({ children }: Properties) => {
 	return (
 		<Box
-			border='2px'
-			borderColor={'black'}
-			borderRadius={'10px'}
-			maxHeight={500}
-			maxWidth={500}
+			maxHeight={'fit-content'}
+			maxWidth={'fit-content'}
 		>
-			{children}
+			<Box
+				border='2px'
+				padding={0.5}
+				borderColor={'black'}
+				borderRadius={'10px'}
+				maxHeight={'min-content'}
+				maxWidth={'min-content'}
+			>
+				{children}
+			</Box>
 		</Box>
 	);
 };

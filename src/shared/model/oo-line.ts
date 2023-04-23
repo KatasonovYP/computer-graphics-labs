@@ -1,33 +1,33 @@
-import { getMethod } from '../lib/logic';
+import { EDrawLineMethod, getDrawLineMethod } from 'shared/lib';
 
-import { type IPoint, Point } from './point';
-import { EMethod } from './types';
+import { type IOOPoint, OOPoint } from './oo-point';
 
-export interface ILine {
-	firstPoint: IPoint;
-	secondPoint: IPoint;
+export interface IOOLine {
+	firstPoint: IOOPoint;
+	secondPoint: IOOPoint;
 	color: string;
 	currentColor: string;
-	pixels: IPoint[];
-	method: EMethod;
+	pixels: IOOPoint[];
+	method: EDrawLineMethod;
 
-	new: (a: IPoint, b: IPoint, color: string, method: EMethod) => ILine;
-	copy: () => ILine;
-	eq: (target: ILine) => boolean;
+	new: (a: IOOPoint, b: IOOPoint, color: string, method: EDrawLineMethod) => IOOLine;
+	copy: () => IOOLine;
+	eq: (target: IOOLine) => boolean;
 	draw: () => void;
-	rotate: (angle: number) => ILine;
+	rotate: (angle: number) => IOOLine;
 }
 
-export const Line: ILine = {
-	firstPoint: Point.new(0, 0),
-	secondPoint: Point.new(0, 0),
+export const OOLine: IOOLine = {
+	firstPoint: OOPoint.new(0, 0),
+	secondPoint: OOPoint.new(0, 0),
 	color: '#f00',
 	currentColor: '#f00',
-	pixels: [Point.new(0, 0)],
-	method: EMethod.DDA,
+	pixels: [OOPoint.new(0, 0)],
+	method: 'DDA',
 
-	new(a, b, color = '#f00', method = EMethod.DDA) {
-		const newLine = Object.create(Line);
+	// eslint-disable-next-line max-params
+	new(a, b, color = '#f00', method = EDrawLineMethod.DDA) {
+		const newLine = Object.create(OOLine);
 		newLine.firstPoint = a;
 		newLine.secondPoint = b;
 		newLine.color = color;
@@ -38,7 +38,7 @@ export const Line: ILine = {
 	},
 
 	copy() {
-		const newLine: ILine = Object.create(Line);
+		const newLine: IOOLine = Object.create(OOLine);
 		newLine.firstPoint = this.firstPoint.copy();
 		newLine.secondPoint = this.secondPoint.copy();
 		const { color, method } = this;
@@ -56,7 +56,7 @@ export const Line: ILine = {
 	},
 
 	draw() {
-		const drawMethod = getMethod(this.method);
+		const drawMethod = getDrawLineMethod(this.method);
 		this.pixels = drawMethod(this.firstPoint, this.secondPoint);
 	},
 

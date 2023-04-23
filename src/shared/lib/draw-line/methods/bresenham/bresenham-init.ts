@@ -1,11 +1,11 @@
-import { type IPoint } from '../../../../model';
+import { type IOOPoint, type IPosition } from 'shared/model';
 
-interface I2D {
-	x: number;
-	y: number;
-}
+interface I2D extends IPosition {}
 
-export function bresenhamInit(startPoint: IPoint, endPoint: IPoint): { step: I2D; absDiff: I2D; isSwapped: boolean } {
+export function bresenhamInit(
+	startPoint: IOOPoint,
+	endPoint: IOOPoint,
+): { step: I2D; absDiff: I2D; isSwapped: boolean } {
 	const diff = {
 		x: endPoint.x - startPoint.x,
 		y: endPoint.y - startPoint.y,

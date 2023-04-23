@@ -26,7 +26,12 @@ export const NumberInput: customFC = <T extends FieldValues>({
 	return (
 		<>
 			<Stack direction={'row'}>
-				<Text minW={70}>{name}:</Text>
+				<Text
+					minW={70}
+					align={'right'}
+				>
+					{name}:
+				</Text>
 				<Input
 					id='standard-basic'
 					placeholder={`Введите ${name}`}

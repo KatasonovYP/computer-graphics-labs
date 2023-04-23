@@ -14,7 +14,7 @@ import { type FC } from 'react';
 
 import { lazily } from 'react-lazily';
 
-import { EMethod } from '../../model';
+import { EDrawLineMethod } from 'shared/lib';
 
 const { ChartSteps } = lazily(async () => await import('./chart-steps'));
 
@@ -39,12 +39,12 @@ export const ModalChartsSteps: FC = () => {
 							columns={[1, null, 2, 3]}
 							spacing={4}
 						>
-							{Object.values(EMethod).map((method, key) => {
-								if (method === EMethod.WU) {
+							{Object.values(EDrawLineMethod).map((method, key) => {
+								if (method === EDrawLineMethod.WU) {
 									return (
 										<ChartSteps
 											key={key}
-											method={EMethod.BRESENHAM_SMOOTH}
+											method={EDrawLineMethod.BRESENHAM_SMOOTH}
 										/>
 									);
 								}

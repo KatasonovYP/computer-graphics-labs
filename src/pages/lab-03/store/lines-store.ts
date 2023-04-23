@@ -1,27 +1,27 @@
 import { create } from 'zustand';
 
-import { type ILine } from '../model';
+import { type IOOLine } from 'shared/model';
 
 interface ILinesStore {
 	color: string;
-	lines: ILine[];
+	lines: IOOLine[];
 
 	spectrum: (angle: number) => void;
 
-	target: ILine | undefined;
-	setTarget: (target: ILine) => void;
-	setTargetState: (target: ILine) => void;
+	target: IOOLine | undefined;
+	setTarget: (target: IOOLine) => void;
+	setTargetState: (target: IOOLine) => void;
 
-	hovered: ILine | undefined;
-	setMouseOver: (hovered: ILine) => void;
-	setMouseLeave: (hovered: ILine) => void;
+	hovered: IOOLine | undefined;
+	setMouseOver: (hovered: IOOLine) => void;
+	setMouseLeave: (hovered: IOOLine) => void;
 
 	choosing: boolean;
 	setChoosing: (choosing: boolean) => void;
 
-	push: (target: ILine) => void;
+	push: (target: IOOLine) => void;
 	clear: () => void;
-	setLines: (target: ILine[]) => void;
+	setLines: (target: IOOLine[]) => void;
 }
 
 export const useLinesStore = create<ILinesStore>(
@@ -36,7 +36,7 @@ export const useLinesStore = create<ILinesStore>(
 			const target = get().target;
 			if (!target) return;
 			let last = target;
-			const lines: ILine[] = [];
+			const lines: IOOLine[] = [];
 			for (let index = 0; index < (360 - angle) / angle; ++index) {
 				last = last.copy();
 				last.rotate(angle);

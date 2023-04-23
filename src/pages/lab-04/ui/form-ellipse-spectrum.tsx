@@ -5,7 +5,9 @@ import { SimpleGrid, Stack } from '@chakra-ui/react';
 import { ColorPicker, InputRadio, NumberInput, SubmitButton } from 'shared/components';
 import { chakraColorToRGBA, DEFAULT_RGBA_COLOR, onPromise } from 'shared/lib';
 
-import { EMethod, IPosition } from '../model';
+import { type IPosition } from 'shared/model';
+
+import { EMethod } from '../model';
 import { getMethodEllipse, getReflectedEllipsePixels } from '../lib';
 import { useFiguresStore } from '../store';
 

@@ -7,7 +7,7 @@ import {
 	DrawerOverlay,
 	useDisclosure,
 } from '@chakra-ui/react';
-import { type FC, ReactNode } from 'react';
+import { type FC, type ReactNode } from 'react';
 
 interface Properties {
 	name: string;

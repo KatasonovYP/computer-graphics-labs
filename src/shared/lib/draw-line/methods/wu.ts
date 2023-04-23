@@ -1,14 +1,14 @@
-import { type IPoint, Point } from '../../../model';
+import { type IOOPoint, OOPoint } from 'shared/model';
 
-export function wu(startPoint: IPoint, endPoint: IPoint): IPoint[] {
-	const pixels: IPoint[] = [];
+export function wu(startPoint: IOOPoint, endPoint: IOOPoint): IOOPoint[] {
+	const pixels: IOOPoint[] = [];
 
 	function drawPoint(steep: boolean, x: number, y: number, intensity: number): void {
 		if (steep) {
 			[x, y] = [y, x];
 		}
 
-		const point = Point.new(x, y);
+		const point = OOPoint.new(x, y);
 		point.intensity = intensity * 100;
 		pixels.push(point);
 	}

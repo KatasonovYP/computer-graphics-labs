@@ -1,9 +1,9 @@
-import { type RefObject, useEffect, useRef, type WheelEvent } from 'react';
+import { MouseEvent, type RefObject, useEffect, useRef, type WheelEvent } from 'react';
+
+import { type IPosition, type Pixel } from 'shared/model';
 
 import { drawPixels } from '../draw-pixels';
 import { drawGridTools } from '../draw-grid-tools';
-
-import { type Pixel } from '../../../model';
 
 import { type moveCanvasHandlerType, useMoveCanvas } from './use-move-canvas';
 import { useScaleCanvas } from './use-scale-canvas';
@@ -18,6 +18,7 @@ export function useCanvas(pixels: Pixel[]): {
 	canvasReference: RefObject<HTMLCanvasElement>;
 	moveCanvas: moveCanvasHandlerType;
 	scaleCanvas: scaleCanvasHandlerType;
+	centerPosition: IPosition;
 } {
 	const canvasReference = useRef<HTMLCanvasElement>(null);
 	const [scale, scaleCanvas] = useScaleCanvas();
@@ -43,5 +44,5 @@ export function useCanvas(pixels: Pixel[]): {
 			context.scale(1 / scale, 1 / scale);
 		}
 	}, [centerPosition, scale, pixels]);
-	return { canvasReference, moveCanvas, scaleCanvas };
+	return { centerPosition, canvasReference, moveCanvas, scaleCanvas };
 }

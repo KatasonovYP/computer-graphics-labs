@@ -1,4 +1,4 @@
-import { type IPosition, Pixel } from '../model';
+import { type IPosition, Pixel } from 'shared/model';
 
 type reflectFunction = (x: number, y: number, center: IPosition) => IPosition;
 

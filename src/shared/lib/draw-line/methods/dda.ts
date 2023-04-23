@@ -1,7 +1,7 @@
-import { type IPoint, Point } from '../../../model';
+import { type IOOPoint, OOPoint } from 'shared/model';
 
-export function dda(startPoint: IPoint, endPoint: IPoint): IPoint[] {
-	const points: IPoint[] = [];
+export function dda(startPoint: IOOPoint, endPoint: IOOPoint): IOOPoint[] {
+	const points: IOOPoint[] = [];
 
 	if (startPoint.eq(endPoint)) {
 		points.push(startPoint);
@@ -25,7 +25,7 @@ export function dda(startPoint: IPoint, endPoint: IPoint): IPoint[] {
 			const roundX = Math.round(x);
 			const roundY = Math.round(y);
 
-			points.push(Point.new(roundX, roundY));
+			points.push(OOPoint.new(roundX, roundY));
 
 			x += step.x;
 			y += step.y;

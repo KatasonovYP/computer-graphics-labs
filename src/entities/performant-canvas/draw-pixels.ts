@@ -1,4 +1,4 @@
-import { type IPosition, type Pixel } from '../../model';
+import { type IPosition, type Pixel } from 'shared/model';
 
 export function drawPixels(context: CanvasRenderingContext2D, pixels: Pixel[], centerPosition: IPosition): void {
 	const image = context.createImageData(context.canvas.width, context.canvas.height);

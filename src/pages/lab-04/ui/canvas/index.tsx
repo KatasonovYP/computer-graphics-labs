@@ -1,10 +1,8 @@
 import { HEIGHT, WIDTH } from 'shared/config';
 
+import { Stroke, useCanvas } from 'entities/performant-canvas';
+
 import { useFiguresStore } from '../../store';
-
-import { useCanvas } from './hooks/use-canvas';
-
-import { Stroke } from './stroke';
 
 import type { FC } from 'react';
 

@@ -1,6 +1,7 @@
+import { DEFAULT_RGBA_COLOR } from 'shared/lib';
+
 import { EMethod } from '../../model';
 import { getMethodCircle } from '../../lib';
-import { DEFAULT_RGBA_COLOR } from 'shared/lib';
 
 interface ITimeFrame {
 	radius: number;

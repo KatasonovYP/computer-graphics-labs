@@ -1,4 +1,4 @@
-import { type IPosition } from '../../model';
+import { type IPosition } from 'shared/model';
 
 const GRID_SIZE = 50;
 

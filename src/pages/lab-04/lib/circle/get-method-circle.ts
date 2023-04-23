@@ -1,8 +1,8 @@
-import { type Irgba } from 'shared/model';
+import { type Irgba , type IPosition, type Pixel } from 'shared/model';
 
 import { isNever } from 'shared/lib';
 
-import { EMethod, type IPosition, type Pixel } from '../../model';
+import { EMethod } from '../../model';
 
 import { canonicalCircle } from './canonical-circle';
 import { parametricCircle } from './parametric-circle';

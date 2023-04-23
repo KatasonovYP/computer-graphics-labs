@@ -1,5 +1,7 @@
 import { type Irgba } from 'shared/model';
 
+import { DEFAULT_RGBA_COLOR } from '../lib';
+
 import { type IPosition } from './position';
 
 function isOnCanvas(pixel: Pixel, centerPosition: IPosition, image: ImageData): boolean {
@@ -16,7 +18,7 @@ export class Pixel {
 	y: number;
 	color: Irgba;
 
-	constructor(x: number, y: number, color: Irgba) {
+	constructor(x: number, y: number, color: Irgba = DEFAULT_RGBA_COLOR) {
 		this.x = x;
 		this.y = y;
 		this.color = color;

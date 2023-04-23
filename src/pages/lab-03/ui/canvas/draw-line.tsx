@@ -1,11 +1,12 @@
 import { type FC } from 'react';
 import { Rect } from 'react-konva';
 
-import { type ILine } from '../../model';
+import { type IOOLine } from 'shared/model';
+
 import { useLinesStore } from '../../store/lines-store';
 
 interface Properties {
-	line: ILine;
+	line: IOOLine;
 }
 
 export const DrawLine: FC<Properties> = ({ line }: Properties) => {

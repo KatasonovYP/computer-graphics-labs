@@ -1,16 +1,15 @@
-import { type IPoint } from '../../../../model';
+import { type IOOPoint } from 'shared/model';
 
 import { bresenhamInit } from './bresenham-init';
 
-export function bresenhamFloat(startPoint: IPoint, endPoint: IPoint): IPoint[] {
-	const pixels: IPoint[] = [];
+export function bresenhamInteger(startPoint: IOOPoint, endPoint: IOOPoint): IOOPoint[] {
+	const pixels: IOOPoint[] = [];
 
 	if (startPoint.eq(endPoint)) {
 		pixels.push(startPoint);
 	} else {
 		const { step, absDiff, isSwapped } = bresenhamInit(startPoint, endPoint);
-		const tg = absDiff.y / absDiff.x;
-		let error = tg - 0.5;
+		let error = 2 * absDiff.y - absDiff.x;
 		const current = startPoint.copy();
 
 		while (!current.eq(endPoint)) {
@@ -18,14 +17,13 @@ export function bresenhamFloat(startPoint: IPoint, endPoint: IPoint): IPoint[] {
 
 			if (error >= 0) {
 				isSwapped ? (current.x += step.x) : (current.y += step.y);
-				error -= 1;
+				error -= 2 * absDiff.x;
 			}
 			if (error <= 0) {
 				isSwapped ? (current.y += step.y) : (current.x += step.x);
-				error += tg;
+				error += 2 * absDiff.y;
 			}
 		}
 	}
-
 	return pixels;
 }

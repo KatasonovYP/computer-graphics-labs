@@ -3,12 +3,12 @@ import { type FC } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { Stack, Text } from '@chakra-ui/react';
 
-import { type EMethod } from '../../model';
+import { type EDrawLineMethod } from 'shared/lib';
 
 import { getStepsData } from './get-steps-data';
 
 interface Properties {
-	method: EMethod;
+	method: EDrawLineMethod;
 }
 
 export const ChartSteps: FC<Properties> = ({ method }) => {

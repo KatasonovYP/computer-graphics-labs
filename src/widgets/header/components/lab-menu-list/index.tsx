@@ -9,7 +9,7 @@ function getMenuItemName(target: number): string {
 
 function getMenuItems(): JSX.Element[] {
 	const result = [];
-	for (let index = 1; index <= 4; ++index) {
+	for (let index = 1; index <= 5; ++index) {
 		const name = getMenuItemName(index);
 		result.push(
 			<MenuItem

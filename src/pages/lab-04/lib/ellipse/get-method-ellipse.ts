@@ -1,8 +1,8 @@
-import { type Irgba } from 'shared/model';
+import { type Irgba , type IPosition, type Pixel } from 'shared/model';
 
 import { isNever } from 'shared/lib';
 
-import { EMethod, type IPosition, type Pixel } from '../../model';
+import { EMethod } from '../../model';
 
 import { bresenhamEllipse } from './bresenham-ellipse';
 import { canonicalEllipse } from './canonical-ellipse';

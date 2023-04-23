@@ -1,22 +1,22 @@
-export interface IPoint {
+export interface IOOPoint {
 	x: number;
 	y: number;
 	parent: unknown;
 	intensity: number;
-	new: (x: number, y: number) => IPoint;
-	copy: () => IPoint;
-	eq: (target: IPoint) => boolean;
-	rotate: (pivot: IPoint, angle: number) => IPoint;
+	new: (x: number, y: number) => IOOPoint;
+	copy: () => IOOPoint;
+	eq: (target: IOOPoint) => boolean;
+	rotate: (pivot: IOOPoint, angle: number) => IOOPoint;
 }
 
-export const Point: IPoint = {
+export const OOPoint: IOOPoint = {
 	x: 0,
 	y: 0,
 	intensity: 100,
 	parent: undefined,
 
 	new(x, y) {
-		const newPoint = Object.create(Point);
+		const newPoint = Object.create(OOPoint);
 		newPoint.x = x;
 		newPoint.y = y;
 		newPoint.parent = undefined;
@@ -24,7 +24,7 @@ export const Point: IPoint = {
 	},
 
 	copy() {
-		const newPoint = Object.create(Point);
+		const newPoint = Object.create(OOPoint);
 		newPoint.x = this.x;
 		newPoint.y = this.y;
 		newPoint.parent = this.parent;
@@ -32,7 +32,7 @@ export const Point: IPoint = {
 		return newPoint;
 	},
 
-	eq(target: IPoint) {
+	eq(target: IOOPoint) {
 		return this.x === target.x && this.y === target.y;
 	},
 

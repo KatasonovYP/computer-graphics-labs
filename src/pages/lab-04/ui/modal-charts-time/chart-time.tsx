@@ -2,8 +2,9 @@ import { type FC } from 'react';
 
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
-import { getAllMethodsTime } from './get-time-data';
 import { EMethod } from '../../model';
+
+import { getAllMethodsTime } from './get-time-data';
 
 export const ChartTime: FC = () => {
 	const data = getAllMethodsTime();

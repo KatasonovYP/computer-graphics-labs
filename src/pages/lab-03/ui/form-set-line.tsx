@@ -3,17 +3,18 @@ import { type SubmitHandler, useForm } from 'react-hook-form';
 import { SimpleGrid, Stack, Text } from '@chakra-ui/react';
 
 import { ColorPicker, InputRadio, NumberInput, SubmitButton } from 'shared/components';
-import { chakraColorToHex, onPromise } from 'shared/lib';
+import { chakraColorToHex, EDrawLineMethod, onPromise } from 'shared/lib';
+
+import { type IOOPoint, OOLine, OOPoint } from 'shared/model';
 
 import { useLinesStore } from '../store/lines-store';
-import { EMethod, type IPoint, Line, Point } from '../model';
 
 interface ISetLinesForm {
 	x1: number;
 	y1: number;
 	x2: number;
 	y2: number;
-	method: EMethod;
+	method: EDrawLineMethod;
 	color: string;
 }
 
@@ -29,12 +30,12 @@ export const SetLineForm: FC = () => {
 	const setTarget = useLinesStore((state) => state.setTarget);
 
 	const onAction: SubmitHandler<ISetLinesForm> = (data): void => {
-		const a: IPoint = Point.new(+data.x1, +data.y1);
-		const b: IPoint = Point.new(+data.x2, +data.y2);
+		const a: IOOPoint = OOPoint.new(+data.x1, +data.y1);
+		const b: IOOPoint = OOPoint.new(+data.x2, +data.y2);
 
 		const hex = chakraColorToHex(data.color);
 
-		const line = Line.new(a, b, hex, data.method);
+		const line = OOLine.new(a, b, hex, data.method);
 		setTarget(line);
 		pushLine(line);
 	};
@@ -56,7 +57,7 @@ export const SetLineForm: FC = () => {
 					<NumberInput {...{ register, errors, name: 'y2', defaultValue: 200 }} />
 				</Stack>
 				<Stack spacing={2}>
-					<InputRadio {...{ register, errors, name: 'method', choices: EMethod }} />
+					<InputRadio {...{ register, errors, name: 'method', choices: EDrawLineMethod }} />
 				</Stack>
 				<Stack
 					spacing={2}

@@ -1,6 +1,6 @@
-import { type IPoint } from '../../model';
+import { type IOOPoint } from 'shared/model';
 
-export function getSteps(pixels: IPoint[]): number {
+export function getLineSteps(pixels: IOOPoint[]): number {
 	let steps = 0;
 	for (let index = 1; index < pixels.length; ++index) {
 		const previous = pixels[index - 1];

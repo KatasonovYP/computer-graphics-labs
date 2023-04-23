@@ -1,9 +1,9 @@
-import { type IPoint } from '../../../../model';
+import { type IOOPoint } from 'shared/model';
 
 import { bresenhamInit } from './bresenham-init';
 
-export function bresenhamSmooth(startPoint: IPoint, endPoint: IPoint): IPoint[] {
-	const pixels: IPoint[] = [];
+export function bresenhamSmooth(startPoint: IOOPoint, endPoint: IOOPoint): IOOPoint[] {
+	const pixels: IOOPoint[] = [];
 
 	if (startPoint.eq(endPoint)) {
 		pixels.push(startPoint);
