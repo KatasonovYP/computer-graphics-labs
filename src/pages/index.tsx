@@ -7,6 +7,7 @@ const { Lab01 } = lazily(async () => await import('./lab-01'));
 const { Lab02 } = lazily(async () => await import('./lab-02'));
 const { Lab03 } = lazily(async () => await import('./lab-03'));
 const { Lab04 } = lazily(async () => await import('./lab-04'));
+const { Lab05 } = lazily(async () => await import('./lab-05'));
 
 export const Routing: FC = () => {
 	return (
@@ -30,6 +31,10 @@ export const Routing: FC = () => {
 			<Route
 				path='/lab-04'
 				element={<Lab04 />}
+			/>
+			<Route
+				path='/lab-05'
+				element={<Lab05 />}
 			/>
 		</Routes>
 	);
