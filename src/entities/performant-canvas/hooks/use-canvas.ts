@@ -1,4 +1,4 @@
-import { MouseEvent, type RefObject, useEffect, useRef, type WheelEvent } from 'react';
+import { type RefObject, useEffect, useRef, type WheelEvent } from 'react';
 
 import { type IPosition, type Pixel } from 'shared/model';
 

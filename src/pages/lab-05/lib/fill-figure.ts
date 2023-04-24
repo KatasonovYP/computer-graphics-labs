@@ -23,15 +23,17 @@ function invertLine(matrix: boolean[][], line: Pixel[]): void {
 	}
 }
 
-function convertMatrixToPixels(matrix: boolean[][], offset: IPosition, color: Irgba): Pixel[] {
-	const pixels: Pixel[] = [];
+function convertMatrixToPixels(matrix: boolean[][], offset: IPosition, color: Irgba): Pixel[][] {
+	const pixels: Pixel[][] = [];
 
 	function getRow(element: boolean[], y: number): void {
+		const linePixels: Pixel[] = [];
 		for (const [x, element_] of element.entries()) {
 			if (element_) {
-				pixels.push(new Pixel(x + offset.x, y + offset.y, color));
+				linePixels.push(new Pixel(x + offset.x, y + offset.y, color));
 			}
 		}
+		pixels.push(linePixels);
 	}
 
 	for (const [y, element] of matrix.entries()) {
@@ -40,12 +42,11 @@ function convertMatrixToPixels(matrix: boolean[][], offset: IPosition, color: Ir
 	return pixels;
 }
 
-export function fillFigure(figure: IPoint[], color: Irgba): Pixel[] {
+export function fillFigure(figure: IPoint[], color: Irgba): Pixel[][] {
 	const { minX, maxX, minY, maxY } = getBorderBox(figure);
 	const width = maxX - minX;
 	const height = maxY - minY;
 	const matrix: boolean[][] = Array.from({ length: height }).map(() => Array.from({ length: width }));
-	console.log(width, height);
 	for (let index = 0; index < figure.length - 1; ++index) {
 		const start = {
 			x: figure[index].x - minX,
