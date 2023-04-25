@@ -107,6 +107,7 @@
     "unicorn/no-useless-undefined": 0,
     "unicorn/prevent-abbreviations": 1,
     "unicorn/consistent-function-scoping": 1,
+    "unicorn/no-for-loop": 1,
 //    "unicorn/no-negated-condition": 0,
 
     // typescript

@@ -1,4 +1,4 @@
 export enum EFillFigureMethod {
-	WithDelay = 'With delay',
 	WithoutDelay = 'Without delay',
+	WithDelay = 'With delay',
 }

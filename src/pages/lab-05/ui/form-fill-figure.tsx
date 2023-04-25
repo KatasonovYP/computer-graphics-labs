@@ -26,7 +26,7 @@ export const FormFillFigure: FC = () => {
 	const pushPixels = useFiguresStore((state) => state.pushPixels);
 	const toast = useToast();
 
-	function showToast(time: number): ToastId {
+	function showSuccessToast(time: number): ToastId {
 		return toast({
 			title: 'The fill is complete.',
 			description: `time: ${time.toFixed(3)}ms`,
@@ -36,14 +36,29 @@ export const FormFillFigure: FC = () => {
 		});
 	}
 
+	function showErrorToast(error: string): ToastId {
+		return toast({
+			title: 'The fill is not complete.',
+			description: `${error}`,
+			status: 'error',
+			duration: 9000,
+			isClosable: true,
+		});
+	}
+
 	const onAction: SubmitHandler<IFormFillFigure> = async (data): Promise<void> => {
 		const color = chakraColorToRGBA(data.color);
+
+		if (figures.length === 0) {
+			showErrorToast('No figures');
+			throw new Error('No figures');
+		}
+
 		if (!color) throw new Error('Invalid color');
 		for (const figure of figures) {
 			const time = performance.now();
 			const pixels = fillFigure(figure, color);
-			showToast(performance.now() - time);
-
+			showSuccessToast(performance.now() - time);
 			if (data.method === EFillFigureMethod.WithDelay) {
 				for (const pixelLine of pixels) {
 					await (async function (): Promise<void> {

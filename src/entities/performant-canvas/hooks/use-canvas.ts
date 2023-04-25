@@ -30,7 +30,7 @@ export function useCanvas(pixels: Pixel[]): {
 		const context = canvas?.getContext('2d');
 		if (context) {
 			cleanCanvas(context);
-			drawPixels(context, pixels, centerPosition);
+			drawPixels(context, pixels, centerPosition).catch(console.error);
 			drawGridTools(context, centerPosition);
 
 			const imageData = context.getImageData(0, 0, context.canvas.width / scale, context.canvas.height / scale);
