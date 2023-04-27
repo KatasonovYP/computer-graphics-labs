@@ -1,8 +1,8 @@
 import { type FC } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
 
-import { LabMenuList } from './components/lab-menu-list';
-import { Logo } from './components/logo';
+import { LabMenuList } from './ui/lab-menu-list';
+import { Logo } from './ui/logo';
 
 export const Header: FC = () => {
 	return (
