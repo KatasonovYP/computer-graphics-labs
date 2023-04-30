@@ -1,0 +1,1 @@
+export { EFillFigureMethod } from './method';
