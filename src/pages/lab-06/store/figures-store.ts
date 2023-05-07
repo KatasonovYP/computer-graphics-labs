@@ -76,7 +76,7 @@ export const useFiguresStore = create(
 			},
 
 			clear(): void {
-				set({ points: [], figures: [], pixels: [] });
+				set({ points: [], figures: [], pixels: [], seedPixel: null });
 			},
 		};
 	}),

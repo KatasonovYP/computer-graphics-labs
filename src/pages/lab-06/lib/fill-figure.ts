@@ -50,6 +50,7 @@ export function fillFigure(figure: Pixel[], seed: Pixel, color: Irgba): Pixel[][
 	const stack: Pixel[] = [seed];
 	let leftX: number = 0;
 	let rightX: number = 0;
+	const filledPixels: Pixel[][] = [];
 
 	while (stack.length > 0) {
 		const current = stack.pop() as Pixel;
@@ -58,8 +59,11 @@ export function fillFigure(figure: Pixel[], seed: Pixel, color: Irgba): Pixel[][
 		let x = current.x;
 		let y = current.y;
 
+		const filledRowPixels: Pixel[] = [];
+
 		for (; !matrix[y - minY][x - minX] && x - minX < matrix[0].length; ++x) {
 			matrix[y - minY][x - minX] = 2;
+			filledRowPixels.push(new Pixel(x, y, color));
 			rightX = x;
 		}
 
@@ -68,8 +72,11 @@ export function fillFigure(figure: Pixel[], seed: Pixel, color: Irgba): Pixel[][
 		y = current.y;
 		for (; !matrix[y - minY][x - minX] && x - minX >= 0; --x) {
 			matrix[y - minY][x - minX] = 2;
+			filledRowPixels.push(new Pixel(x, y, color));
 			leftX = x;
 		}
+
+		filledPixels.push(filledRowPixels);
 
 		// нижняя часть
 		if (current.y - minY < matrix.length - 1) {
@@ -105,6 +112,7 @@ export function fillFigure(figure: Pixel[], seed: Pixel, color: Irgba): Pixel[][
 			}
 			// ########################
 			if (flag && y - minY > 0) {
+				// тут поменяли границу
 				const isSomething = x === rightX + 1 && matrix[y - minY][x - minX];
 				const nextPixel = new Pixel(isSomething ? x : x - 1, y);
 				stack.push(nextPixel);
@@ -115,5 +123,5 @@ export function fillFigure(figure: Pixel[], seed: Pixel, color: Irgba): Pixel[][
 			// ########################
 		}
 	}
-	return convertMatrixToPixels(matrix, { x: minX, y: minY }, color);
+	return filledPixels;
 }

@@ -6,8 +6,9 @@ import { useFiguresStore } from '../../store';
 
 import { useClickHandle } from './use-click-handle';
 
-import type { FC } from 'react';
 import { useDrawHandler } from './use-draw-handler';
+
+import type { FC } from 'react';
 
 export const PerformantCanvas: FC = () => {
 	const pixels = useFiguresStore((state) => state.pixels);
