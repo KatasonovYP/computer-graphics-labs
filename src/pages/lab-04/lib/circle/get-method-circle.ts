@@ -1,4 +1,4 @@
-import { type Irgba , type IPosition, type Pixel } from 'shared/model';
+import { type Irgba, type IPosition, type Pixel } from 'shared/model';
 
 import { isNever } from 'shared/lib';
 

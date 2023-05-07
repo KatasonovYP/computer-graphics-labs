@@ -1,4 +1,4 @@
-import { type Irgba , type IPosition, Pixel } from 'shared/model';
+import { type Irgba, type IPosition, Pixel } from 'shared/model';
 
 export function midpointEllipse(center: IPosition, radius: IPosition, color: Irgba): Pixel[] {
 	const pixels: Pixel[] = [];

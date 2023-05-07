@@ -1,4 +1,4 @@
-import { type Irgba , type IPosition, Pixel } from 'shared/model';
+import { type Irgba, type IPosition, Pixel } from 'shared/model';
 
 export function bresenhamCircle(center: IPosition, radius: number, color: Irgba): Pixel[] {
 	const pixels: Pixel[] = [];
