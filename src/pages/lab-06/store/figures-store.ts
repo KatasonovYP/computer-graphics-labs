@@ -1,10 +1,11 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
+import produce from 'immer';
+
 import { type IPoint, Pixel } from 'shared/model';
 
 import { drawLine } from '../lib/draw-line';
-import produce from 'immer';
 
 type Figure = IPoint[];
 

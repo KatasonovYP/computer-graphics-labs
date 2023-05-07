@@ -7,7 +7,7 @@ import { chakraColorToRGBA, onPromise } from 'shared/lib';
 
 import { EFillFigureMethod } from '../model';
 import { useFiguresStore } from '../store';
-import { fillFigure } from '../lib/fill-figure';
+import { fillFigure } from '../lib';
 
 interface IFormFillFigure {
 	method: EFillFigureMethod;
@@ -23,6 +23,7 @@ export const FormFillFigure: FC = () => {
 	} = useForm<IFormFillFigure>();
 
 	const figures = useFiguresStore((state) => state.figures);
+	const figurePixels = useFiguresStore((state) => state.pixels);
 	const pushPixels = useFiguresStore((state) => state.pushPixels);
 	const seedPixel = useFiguresStore((state) => state.seedPixel);
 	const toast = useToast();
@@ -65,7 +66,7 @@ export const FormFillFigure: FC = () => {
 		if (!color) throw new Error('Invalid color');
 		for (const figure of figures) {
 			const time = performance.now();
-			const pixels = fillFigure(figure, color);
+			const pixels = fillFigure(figurePixels, seedPixel, color);
 			showSuccessToast(performance.now() - time);
 			if (data.method === EFillFigureMethod.WithDelay) {
 				for (const pixelLine of pixels) {

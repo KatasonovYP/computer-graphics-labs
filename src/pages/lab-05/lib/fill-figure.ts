@@ -1,4 +1,4 @@
-import { type IPoint, IPosition, Irgba, Pixel } from 'shared/model';
+import { type IPoint, type IPosition, type Irgba, Pixel } from 'shared/model';
 
 import { drawLine } from './draw-line';
 
@@ -25,8 +25,8 @@ function removeDuplicates(pixels: Pixel[]): Pixel[] {
 
 function findIntersect(startPoint: Pixel, figure: IPoint[]): number {
 	const edges: Array<[IPoint, IPoint]> = [];
-	for (let i = 0; i < figure.length - 1; ++i) {
-		edges.push([figure[i], figure[i + 1]]);
+	for (let index = 0; index < figure.length - 1; ++index) {
+		edges.push([figure[index], figure[index + 1]]);
 	}
 	let minimal = 100_000;
 	for (const edge of edges) {
@@ -41,8 +41,7 @@ function findIntersect(startPoint: Pixel, figure: IPoint[]): number {
 function invertLine(matrix: boolean[][], line: Pixel[], figure: IPoint[]): void {
 	const filtered = removeDuplicates(line);
 	// filtered = filtered.sort((a, b) => a.x - b.x);
-	for (let index = 0; index < filtered.length; ++index) {
-		const current = filtered[index];
+	for (const current of filtered) {
 		const end = findIntersect(current, figure);
 		for (let x = current.x; x < matrix[current.y].length; ++x) {
 			matrix[current.y][x] = !matrix[current.y][x];
@@ -100,8 +99,8 @@ export function fillFigure(figure: IPoint[], color: Irgba): Pixel[][] {
 export function fillWithoutPixels(figure: IPoint[], color: Irgba): Pixel[][] {
 	const maxPoint = Math.max(...figure.map((point) => point.x));
 	const edges: Array<[IPoint, IPoint]> = [];
-	for (let i = 0; i < figure.length - 1; ++i) {
-		edges.push([figure[i], figure[i + 1]]);
+	for (let index = 0; index < figure.length - 1; ++index) {
+		edges.push([figure[index], figure[index + 1]]);
 	}
 	const allPoints: Pixel[][] = [];
 	for (const edge of edges) {

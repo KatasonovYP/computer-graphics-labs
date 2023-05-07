@@ -21,17 +21,10 @@ export const FormAddPoint: FC = () => {
 
 	const addPoint = useFiguresStore((state) => state.addPoint);
 	const closeFigure = useFiguresStore((state) => state.closeFigure);
-	const points = useFiguresStore((state) => state.points);
-	const figures = useFiguresStore((state) => state.figures);
 
 	const onAction: SubmitHandler<IFormAddPoint> = (data): void => {
 		addPoint({ x: +data.x, y: +data.y });
 	};
-
-	useEffect(() => {
-		console.log('points', points);
-		console.log('figures', figures);
-	}, [points, figures]);
 
 	return (
 		<form onSubmit={onPromise(handleSubmit(onAction))}>

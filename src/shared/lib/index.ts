@@ -3,3 +3,4 @@ export { useFeatureStore, useFigureStore, useHistoryStore } from './store';
 export { Point } from './geometry/point';
 export { Figure } from './geometry/figure';
 export { getDrawLineMethod, getLineSteps, EDrawLineMethod, type IDrawLineMethodFunctionType } from './draw-line';
+export { useStatusToast } from './hooks/use-status-toast';
