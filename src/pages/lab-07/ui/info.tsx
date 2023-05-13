@@ -6,6 +6,7 @@ export const Info: FC = () => {
 		<div>
 			<Text>Create line: left click</Text>
 			<Text>Create rectangle: middle click</Text>
+			<Text>Replace pivot: ctrl + click</Text>
 		</div>
 	);
 };

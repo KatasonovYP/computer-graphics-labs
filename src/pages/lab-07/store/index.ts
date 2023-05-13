@@ -3,18 +3,22 @@ import { immer } from 'zustand/middleware/immer';
 
 import { produce } from 'immer';
 
+import { type IPosition } from 'shared/model';
+
 import { type ILine, type IRectangle } from '../model';
 
 interface State {
 	rectangle: IRectangle | null;
 	lines: ILine[];
 	cuts: ILine[];
+	pivot: IPosition | null;
 }
 
 interface Actions {
 	addLine: (line: ILine) => void;
 	setRectangle: (rectangle: IRectangle) => void;
 	addCut: (line: ILine) => void;
+	setPivot: (pivot: IPosition | null) => void;
 	clearCuts: () => void;
 	clear: () => void;
 }
@@ -27,6 +31,7 @@ export const useShapesStore = create(
 			lines: [],
 			cuts: [],
 			rectangle: null,
+			pivot: null,
 
 			addLine(line: ILine): void {
 				set(
@@ -48,12 +53,16 @@ export const useShapesStore = create(
 				set({ rectangle });
 			},
 
+			setPivot(pivot: IPosition | null): void {
+				set({ pivot });
+			},
+
 			clearCuts(): void {
 				set({ cuts: [] });
 			},
 
 			clear(): void {
-				set({ lines: [], rectangle: null, cuts: [] });
+				set({ lines: [], rectangle: null, cuts: [], pivot: null });
 			},
 		};
 	}),

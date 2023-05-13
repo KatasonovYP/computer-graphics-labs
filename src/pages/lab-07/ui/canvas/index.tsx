@@ -6,6 +6,7 @@ import { DrawLines } from './draw-lines';
 import { DrawRectangle } from './draw-rectangle';
 import { DrawCuts } from './draw-cuts';
 import { useOneClickDrawHandler } from './use-one-click-draw-handler';
+import { DrawPivot } from './draw-pivot';
 
 export const Canvas: FC = () => {
 	const onClickDrawHandler = useOneClickDrawHandler();
@@ -18,6 +19,7 @@ export const Canvas: FC = () => {
 			<DrawLines />
 			<DrawRectangle />
 			<DrawCuts />
+			<DrawPivot />
 		</Grid>
 	);
 };

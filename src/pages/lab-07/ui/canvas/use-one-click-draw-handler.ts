@@ -1,7 +1,5 @@
 import { type KonvaEventObject } from 'konva/lib/Node';
 
-import { useState } from 'react';
-
 import { chakraColorToHex } from 'shared/lib';
 
 import { type IPosition } from 'shared/model';
@@ -9,11 +7,13 @@ import { type IPosition } from 'shared/model';
 import { useShapesStore } from '../../store';
 
 type IOnClickDrawHandler = (event: KonvaEventObject<MouseEvent>) => void;
+
 export function useOneClickDrawHandler(): IOnClickDrawHandler {
 	const addLine = useShapesStore((state) => state.addLine);
 	const clearCuts = useShapesStore((state) => state.clearCuts);
 	const setRectangle = useShapesStore((state) => state.setRectangle);
-	const [previousPoint, setPreviousPoint] = useState<IPosition | null>(null);
+	const previousPoint = useShapesStore((state) => state.pivot);
+	const setPreviousPoint = useShapesStore((state) => state.setPivot);
 
 	function drawLineHandler(event: KonvaEventObject<MouseEvent>, currentPoint: IPosition): void {
 		if (previousPoint) {
@@ -48,6 +48,11 @@ export function useOneClickDrawHandler(): IOnClickDrawHandler {
 	function onClickDrawHandler(event: KonvaEventObject<MouseEvent>): void {
 		const currentPoint: IPosition = event.currentTarget.getRelativePointerPosition();
 
+		if (event.evt.ctrlKey) {
+			setPreviousPoint(currentPoint);
+			return;
+		}
+
 		if (event.evt.button === 0) {
 			drawLineHandler(event, currentPoint);
 		}
@@ -55,5 +60,6 @@ export function useOneClickDrawHandler(): IOnClickDrawHandler {
 			drawRectangleHandler(event, currentPoint);
 		}
 	}
+
 	return onClickDrawHandler;
 }
