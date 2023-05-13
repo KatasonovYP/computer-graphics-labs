@@ -1,66 +1,31 @@
-import { type FC, type ReactNode, useState } from 'react';
+import { type FC, type ReactNode } from 'react';
 import { Layer, Stage } from 'react-konva';
+
 import { type KonvaEventObject } from 'konva/lib/Node';
 
-import { type IStage } from './model/types';
 import { drawLines } from './ui/draw-lines';
 import { Stroke } from './ui/stroke';
+import { useMoveHandler } from './hooks/use-move-handler';
+import { useScaleHandler } from './hooks/use-scale-handler';
+import { useStage } from './hooks/use-stage';
 
+type IOnClickHandler = (event: KonvaEventObject<MouseEvent>) => void;
 interface Properties {
-	children: ReactNode;
+	draggable?: boolean;
+	onClickHandler?: IOnClickHandler;
+	children?: ReactNode;
 }
 
-export const Grid: FC<Properties> = ({ children }: Properties) => {
-	const sideLength = Math.min(window.screen.availWidth - 20, 500);
-	const [stage, setStage] = useState<IStage>({
-		x: 0,
-		y: 0,
-		width: sideLength,
-		height: sideLength,
-		scale: 1,
-	});
-
-	const moveHandler = (event: KonvaEventObject<MouseEvent>): void => {
-		const pos = event.currentTarget.position();
-		const x = pos.x;
-		const y = pos.y;
-		setStage({ ...stage, x, y });
-	};
-
-	// scale
-	const scaleHandler = (event: KonvaEventObject<WheelEvent>): void => {
-		event.evt.preventDefault();
-
-		const scaleBy = 1.02;
-		const newStage = event.target.getStage();
-
-		if (newStage === null) return;
-
-		const pointer = newStage.getPointerPosition();
-
-		if (pointer === null) return;
-
-		const oldScale = stage.scale;
-		const mousePointTo = {
-			x: (pointer.x - newStage.x()) / oldScale,
-			y: (pointer.y - newStage.y()) / oldScale,
-		};
-
-		const newScale = event.evt.deltaY < 0 ? oldScale * scaleBy : oldScale / scaleBy;
-
-		setStage({
-			...stage,
-			x: pointer.x - mousePointTo.x * newScale,
-			y: pointer.y - mousePointTo.y * newScale,
-			scale: newScale,
-		});
-	};
+export const Grid: FC<Properties> = ({ onClickHandler, children, draggable = true }) => {
+	const { stage, setStage } = useStage();
+	const moveHandler = useMoveHandler(setStage);
+	const scaleHandler = useScaleHandler(stage, setStage);
 
 	return (
 		<Stroke>
 			<Stage
 				className='canvas'
-				draggable
+				draggable={draggable}
 				width={stage.width}
 				height={stage.height}
 				scaleX={stage.scale}
@@ -69,6 +34,7 @@ export const Grid: FC<Properties> = ({ children }: Properties) => {
 				y={stage.y}
 				onWheel={scaleHandler}
 				onDragMove={moveHandler}
+				onClick={onClickHandler}
 			>
 				<Layer
 					clipX={-stage.x / stage.scale}

@@ -1,4 +1,4 @@
-import { Stack, Text } from '@chakra-ui/react';
+import { InputLeftAddon, Stack, Text } from '@chakra-ui/react';
 import { type FC } from 'react';
 
 import {

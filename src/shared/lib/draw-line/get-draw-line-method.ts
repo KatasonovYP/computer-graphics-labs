@@ -5,7 +5,7 @@ import { bresenhamFloat, bresenhamInteger, bresenhamSmooth } from './methods/bre
 import { wu } from './methods/wu';
 
 export type IDrawLineMethodFunctionType = (startPoint: IOOPoint, endPoint: IOOPoint) => IOOPoint[];
-export const enum EDrawLineMethod {
+export enum EDrawLineMethod {
 	DDA = 'DDA',
 	BRESENHAM_INT = 'Bresenham-integer',
 	BRESENHAM_FLOAT = 'Bresenham-float',
