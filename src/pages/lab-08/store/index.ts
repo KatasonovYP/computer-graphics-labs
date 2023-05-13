@@ -20,7 +20,7 @@ interface Actions {
 	addPointToPolygon: (point: IFlatPoint) => void;
 	closePolygon: () => void;
 	addCut: (line: ILine) => void;
-	setPivot: (pivot: IPosition) => void;
+	setPivot: (pivot: IPosition | null) => void;
 	clearCuts: () => void;
 	clear: () => void;
 }
@@ -78,7 +78,7 @@ export const useShapesStore = create(
 				set({ polygon });
 			},
 
-			setPivot(pivot: IPosition): void {
+			setPivot(pivot: IPosition | null): void {
 				set({ pivot });
 			},
 
@@ -87,7 +87,7 @@ export const useShapesStore = create(
 			},
 
 			clear(): void {
-				set({ lines: [], polygon: [], cuts: [], isClosed: false });
+				set({ lines: [], polygon: [], cuts: [], isClosed: false, pivot: null });
 			},
 		};
 	}),
