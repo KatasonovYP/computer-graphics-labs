@@ -2,6 +2,8 @@ import { type FC } from 'react';
 import { Route, Routes } from 'react-router';
 import { lazily } from 'react-lazily';
 
+import { Lab08 } from './lab-08';
+
 const { Home } = lazily(async () => await import('./home'));
 const { Lab01 } = lazily(async () => await import('./lab-01'));
 const { Lab02 } = lazily(async () => await import('./lab-02'));
@@ -49,10 +51,10 @@ export const Routing: FC = () => {
 				path='/lab-07'
 				element={<Lab07 />}
 			/>
-			{/* <Route */}
-			{/* 	path='/lab-08' */}
-			{/* 	element={<Lab08 />} */}
-			{/* /> */}
+			<Route
+				path='/lab-08'
+				element={<Lab08 />}
+			/>
 			{/* <Route */}
 			{/* 	path='/lab-09' */}
 			{/* 	element={<Lab09 />} */}
