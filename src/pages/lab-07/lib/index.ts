@@ -52,6 +52,7 @@ export function simpleClipping(line: IFlatLine, rectangle: IRectangle): IFlatLin
 	/* 'Вычисление логического произведения кодов концов отрезка' */
 	if (!finalFlag) {
 		let pl = 0;
+		// eslint-disable-next-line unicorn/no-for-loop
 		for (let index_ = 0; index_ < firstCode.length; ++index_) {
 			pl += Number.parseInt(firstCode[index_]) * Number.parseInt(secondCode[index_]);
 		}

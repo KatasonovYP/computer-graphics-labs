@@ -58,7 +58,7 @@ export const FormDrawRect: FC = () => {
 				>
 					<ColorPicker {...{ setValue, register, errors, name: 'color' }} />
 				</Stack>
-				<SubmitButton>Отрисовать</SubmitButton>
+				<SubmitButton>Draw</SubmitButton>
 			</SimpleGrid>
 		</form>
 	);

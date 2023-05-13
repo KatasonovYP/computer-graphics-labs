@@ -11,12 +11,13 @@ import { useStage } from './hooks/use-stage';
 
 type IOnClickHandler = (event: KonvaEventObject<MouseEvent>) => void;
 interface Properties {
+	scalable?: boolean;
 	draggable?: boolean;
 	onClickHandler?: IOnClickHandler;
 	children?: ReactNode;
 }
 
-export const Grid: FC<Properties> = ({ onClickHandler, children, draggable = true }) => {
+export const Grid: FC<Properties> = ({ onClickHandler, children, draggable = true, scalable = true }) => {
 	const { stage, setStage } = useStage();
 	const moveHandler = useMoveHandler(setStage);
 	const scaleHandler = useScaleHandler(stage, setStage);
@@ -32,7 +33,7 @@ export const Grid: FC<Properties> = ({ onClickHandler, children, draggable = tru
 				scaleY={stage.scale}
 				x={stage.x}
 				y={stage.y}
-				onWheel={scaleHandler}
+				onWheel={scalable ? scaleHandler : undefined}
 				onDragMove={moveHandler}
 				onClick={onClickHandler}
 			>

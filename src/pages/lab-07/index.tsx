@@ -6,6 +6,7 @@ import { FormDrawLine } from './ui/form-draw-line';
 import { Canvas } from './ui/canvas';
 import { ButtonClean } from './ui/button-clean';
 import { ButtonCut } from './ui/button-cut';
+import { Info } from './ui/info';
 
 export const Lab07: FC = () => {
 	return (
@@ -16,12 +17,13 @@ export const Lab07: FC = () => {
 			gap={4}
 		>
 			<Stack spacing={4}>
-				<Text fontSize='2xl'>new line form</Text>
+				<Text fontSize='2xl'>new line</Text>
 				<FormDrawLine />
-				<Text fontSize='2xl'>set rectangle form</Text>
+				<Text fontSize='2xl'>set rectangle</Text>
 				<FormDrawRect />
 				<ButtonCut />
 				<ButtonClean />
+				<Info />
 			</Stack>
 
 			<Canvas />

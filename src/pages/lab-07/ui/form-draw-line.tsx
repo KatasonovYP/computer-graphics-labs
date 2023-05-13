@@ -6,7 +6,6 @@ import { ColorPicker, NumberInput, SubmitButton } from 'shared/components';
 import { chakraColorToHex, onPromise } from 'shared/lib';
 
 import { useShapesStore } from '../store';
-import { ILine } from '../model';
 
 interface ISetLinesForm {
 	x1: number;
@@ -56,7 +55,7 @@ export const FormDrawLine: FC = () => {
 				>
 					<ColorPicker {...{ setValue, register, errors, name: 'color' }} />
 				</Stack>
-				<SubmitButton>Отрисовать</SubmitButton>
+				<SubmitButton>Draw</SubmitButton>
 			</SimpleGrid>
 		</form>
 	);
