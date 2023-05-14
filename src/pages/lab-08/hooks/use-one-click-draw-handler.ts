@@ -6,7 +6,7 @@ import { chakraColorToHex } from 'shared/lib';
 
 import { type IPosition } from 'shared/model';
 
-import { useShapesStore } from '../../store';
+import { useShapesStore } from '../store';
 
 type IOnClickDrawHandler = (event: KonvaEventObject<MouseEvent>) => void;
 export function useOneClickDrawHandler(): IOnClickDrawHandler {
@@ -35,6 +35,8 @@ export function useOneClickDrawHandler(): IOnClickDrawHandler {
 
 	function onClickDrawHandler(event: KonvaEventObject<MouseEvent>): void {
 		const currentPoint: IPosition = event.currentTarget.getRelativePointerPosition();
+		currentPoint.x = Math.round(currentPoint.x);
+		currentPoint.y = Math.round(currentPoint.y);
 
 		if (event.evt.button === 0) {
 			drawLineHandler(event, currentPoint);

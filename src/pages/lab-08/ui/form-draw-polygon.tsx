@@ -1,11 +1,12 @@
 import { type FC } from 'react';
 import { type SubmitHandler, useForm } from 'react-hook-form';
-import { Button, SimpleGrid, Stack } from '@chakra-ui/react';
+import { Button, SimpleGrid } from '@chakra-ui/react';
 
 import { NumberInput, SubmitButton } from 'shared/components';
 import { onPromise } from 'shared/lib';
 
 import { useShapesStore } from '../store';
+import { useClosePolygon } from '../hooks/use-close-polygon';
 
 interface IDrawRectForm {
 	x: number;
@@ -20,10 +21,9 @@ export const FormDrawPolygon: FC = () => {
 	} = useForm<IDrawRectForm>();
 
 	const addPointToPolygon = useShapesStore((state) => state.addPointToPolygon);
-	const closePolygon = useShapesStore((state) => state.closePolygon);
-
+	const { closePolygonHandler } = useClosePolygon();
 	const onAction: SubmitHandler<IDrawRectForm> = (data): void => {
-		addPointToPolygon([+data.x, +data.y]);
+		addPointToPolygon([Math.round(+data.x), Math.round(+data.y)]);
 	};
 
 	return (
@@ -36,7 +36,7 @@ export const FormDrawPolygon: FC = () => {
 			>
 				<NumberInput {...{ register, errors, name: 'x', defaultValue: 10 }} />
 				<NumberInput {...{ register, errors, name: 'y', defaultValue: 15 }} />
-				<Button onClick={closePolygon}>Close polygon</Button>
+				<Button onClick={closePolygonHandler}>Close polygon</Button>
 				<SubmitButton>Add Point</SubmitButton>
 			</SimpleGrid>
 		</form>

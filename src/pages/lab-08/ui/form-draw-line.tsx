@@ -27,7 +27,7 @@ export const FormDrawLine: FC = () => {
 
 	const onAction: SubmitHandler<ISetLinesForm> = (data): void => {
 		addLine({
-			points: [+data.x1, +data.y1, +data.x2, +data.y2],
+			points: [Math.round(+data.x1), Math.round(+data.y1), Math.round(+data.x2), Math.round(+data.y2)],
 			color: chakraColorToHex(data.color),
 		});
 	};

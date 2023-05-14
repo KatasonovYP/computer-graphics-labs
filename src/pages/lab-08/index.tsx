@@ -7,6 +7,7 @@ import { Canvas } from './ui/canvas';
 import { ButtonClean } from './ui/button-clean';
 import { ButtonCut } from './ui/button-cut';
 import { Info } from './ui/info';
+import { ButtonAddParallels } from './ui/button-add-parallels';
 
 export const Lab08: FC = () => {
 	return (
@@ -21,6 +22,7 @@ export const Lab08: FC = () => {
 				<FormDrawLine />
 				<Text fontSize='2xl'>set polygon</Text>
 				<FormDrawPolygon />
+				<ButtonAddParallels />
 				<ButtonCut />
 				<ButtonClean />
 				<Info />
