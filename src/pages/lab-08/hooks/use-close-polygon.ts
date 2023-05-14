@@ -1,6 +1,6 @@
-import { useShapesStore } from '../store';
+import { useErrorToast } from 'shared/hooks';
 
-import { useErrorToast } from './use-error-toast';
+import { useShapesStore } from '../store';
 
 export function useClosePolygon(): { closePolygonHandler: () => void } {
 	const polygon = useShapesStore((state) => state.polygon);

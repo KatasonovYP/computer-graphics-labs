@@ -1,8 +1,9 @@
 import { chakraColorToHex } from 'shared/lib';
 
+import { useErrorToast } from 'shared/hooks';
+
 import { useShapesStore } from '../store';
 import { getConvexityPolygon, cyrusBeckAlg } from '../lib';
-import { useErrorToast } from './use-error-toast';
 
 export function useCut(): { cutLinesHandler: () => void } {
 	const polygon = useShapesStore((state) => state.polygon);

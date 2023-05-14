@@ -1,6 +1,6 @@
-import { useShapesStore } from '../store';
+import { useErrorToast } from 'shared/hooks';
 
-import { useErrorToast } from './use-error-toast';
+import { useShapesStore } from '../store';
 
 export function useParallels(): { addParallelsHandler: () => void } {
 	const polygon = useShapesStore((state) => state.polygon);

@@ -4,6 +4,8 @@ import { Button } from '@chakra-ui/react';
 
 import { chakraColorToHex } from 'shared/lib';
 
+import { useErrorToast } from 'shared/hooks';
+
 import { useShapesStore } from '../store';
 import { simpleClipping } from '../lib';
 
@@ -12,10 +14,17 @@ export const ButtonCut: FC = () => {
 	const lines = useShapesStore((state) => state.lines);
 	const addCut = useShapesStore((state) => state.addCut);
 	const clearCuts = useShapesStore((state) => state.clearCuts);
+	const { showErrorToast } = useErrorToast();
 
 	function cutLinesHandler(): void {
-		if (!rectangle) throw new Error('no rectangle');
-		if (lines.length === 0) throw new Error('no lines');
+		if (!rectangle) {
+			showErrorToast('no rectangle');
+			throw new Error('no rectangle');
+		}
+		if (lines.length === 0) {
+			showErrorToast('no lines');
+			throw new Error('no lines');
+		}
 
 		clearCuts();
 
