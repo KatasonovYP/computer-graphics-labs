@@ -27,11 +27,32 @@ export function useCut(): { cutLinesHandler: () => void } {
 			throw new Error('not convex');
 		}
 
-		const cutterNormalized = convexity > 0 ? [...cutter].slice(0, -1) : [...cutter].reverse();
+		let cutterNormalized = [...cutter];
+		let shapeNormalized = [...shape];
+
+		let result = sutherlandHodgman(shapeNormalized, cutterNormalized);
+
+		if (result.length === 0) {
+			cutterNormalized = [...cutter];
+			shapeNormalized = [...shape].reverse();
+			result = sutherlandHodgman(shapeNormalized, cutterNormalized);
+		}
+
+		if (result.length === 0) {
+			cutterNormalized = [...cutter].reverse();
+			shapeNormalized = [...shape];
+			result = sutherlandHodgman(shapeNormalized, cutterNormalized);
+		}
+
+		if (result.length === 0) {
+			cutterNormalized = [...cutter].reverse();
+			shapeNormalized = [...shape].reverse();
+			result = sutherlandHodgman(shapeNormalized, cutterNormalized);
+		}
 
 		clearCutoff();
 
-		setCutoff(sutherlandHodgman(shape, cutterNormalized));
+		setCutoff(sutherlandHodgman(shapeNormalized, cutterNormalized));
 	}
 
 	return { cutLinesHandler };

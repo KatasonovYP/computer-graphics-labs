@@ -1,4 +1,5 @@
 import { type IFlatLine, type IFlatPoint, type IPolygon } from '../model';
+import { intersect } from './is-intersect';
 
 type IVector = IFlatPoint;
 
@@ -24,11 +25,31 @@ export function getConvexityPolygon(cutter: IPolygon): -1 | 0 | 1 {
 
 	const sign = vectorProduct(vector1, vector2) > 0 ? 1 : -1;
 
+	const edges: Array<[IFlatPoint, IFlatPoint]> = [];
+	for (let index = 0; index < cutter.length - 1; index++) {
+		const pointA = cutter[index];
+		const pointB = cutter[(index + 1) % cutter.length];
+		edges.push([pointA, pointB]);
+	}
+
+	console.log(edges);
+
+	for (const edgeA of edges) {
+		for (const edgeB of edges) {
+			if (edgeA === edgeB) {
+				continue;
+			}
+
+			if (intersect(edgeA[0], edgeA[1], edgeB[0], edgeB[1])) {
+				return 0;
+			}
+		}
+	}
+
 	for (let index = 0; index < cutter.length; index++) {
-		const vectorI: IVector = getVector(
-			cutter[(index - 2 + cutter.length) % cutter.length],
-			cutter[(index - 1 + cutter.length) % cutter.length],
-		);
+		const pointA = cutter[(index - 2 + cutter.length) % cutter.length];
+		const pointB = cutter[(index - 1 + cutter.length) % cutter.length];
+		const vectorI: IVector = getVector(pointA, pointB);
 		const vectorJ: IVector = getVector(cutter[(index - 1 + cutter.length) % cutter.length], cutter[index]);
 
 		if (sign * vectorProduct(vectorI, vectorJ) < 0) {
